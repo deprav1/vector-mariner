@@ -29,7 +29,8 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .nav-logo{font-weight:800;font-size:1.15rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-links{display:flex;gap:24px;flex-wrap:wrap}
 .nav-links a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text);-webkit-text-fill-color:unset;opacity:1}
-@media(max-width:768px){.nav-links{display:none}}
+.burger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;padding:4px}
+@media(max-width:768px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,15,.96);backdrop-filter:blur(16px);flex-direction:column;padding:16px 20px;gap:12px;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}.burger{display:block}}
 
 /* Hero */
 .hero{padding:140px 0 80px;text-align:center;position:relative}
@@ -162,8 +163,9 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <!-- NAV -->
 <nav><div class="container">
 <div class="nav-logo">🏥 Страховка.RS</div>
+<button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
 <div class="nav-links">
-<a href="#compare">Сравнение</a><a href="#companies">Компании</a><a href="#calculator">Калькулятор</a><a href="#lifehacks">Лайфхаки</a><a href="#pitfalls">Нюансы</a><a href="#reviews">Отзывы</a><a href="#docs">Документы</a>
+<a href="#compare">Сравнение</a><a href="#scenarios">Что если?</a><a href="#companies">Компании</a><a href="#calculator">Калькулятор</a><a href="#lifehacks">Лайфхаки</a><a href="#pitfalls">Нюансы</a><a href="#docs">Документы</a>
 </div>
 </div></nav>
 
@@ -176,11 +178,6 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <div class="badge">📋 5 компаний</div>
 <div class="badge">💬 Данные из 90+ чатов</div>
 <div class="badge">🔓 Open Source</div>
-</div>
-<div class="consultant fade-in">
-<div class="consultant-avatar">👨‍⚕️</div>
-<div><div class="consultant-name">Доктор Марко</div><div class="consultant-role">Ваш виртуальный страховой консультант</div>
-<div class="consultant-quote">«Я проанализировал 5 страховых, 90 страниц чатов экспатов и 5 глубоких исследований, чтобы вы не тратили недели на изучение мелкого шрифта.»</div></div>
 </div>
 </div></section>
 
@@ -202,10 +199,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 </table>
 </div>
 <p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">Цены для 31-35 лет (ж). Источники: ¹ <a href="https://dzo.uniqa.rs" target="_blank">dzo.uniqa.rs</a> · ² <a href="https://www.ddor.rs/osiguranje/dobrovoljno-zdravstveno-osiguranje/zdravo-da-ste/" target="_blank">ddor.rs</a> · ³ <a href="https://dzokalkulator.triglav.rs/DZOwebKalkulator" target="_blank">triglav.rs калькулятор</a> · ⁴ <a href="https://wiener.co.rs/zdravi-i-fit/dobrovoljno-zdravstveno-osiguranje/basic/" target="_blank">wiener.co.rs</a> + <a href="https://srb.guide" target="_blank">srb.guide</a> · ⁵ <a href="https://www.dunav.com/osiguranje/zdravlje/dobrovoljno-zdravstveno-osiguranje" target="_blank">dunav.com</a>. Все цены — ориентиры, точные рассчитываются индивидуально.</p>
-<div id="markoTip" class="marko-tip fade-in" style="display:none">
-<div class="avatar">👨‍⚕️</div>
-<div><div class="tip-label">Совет Доктора Марко</div><div class="tip-text" id="markoText"></div></div>
-</div>
+
 </div></section>
 
 <!-- SCENARIOS -->
@@ -273,7 +267,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 
 <div class="glass company-card fade-in">
 <div class="logo" style="color:#e17055">Dunav</div>
-<div class="tagline">Самый дешёвый для ВНЖ (но символический)</div>
+<div class="tagline">Самый дешёвый полис для ВНЖ (лимит ~€150)</div>
 <div class="rating-bars"><div class="rating-bar"><div class="rb-label">Цена</div><div class="rb-track"><div class="rb-fill" style="width:95%;background:var(--green)"></div></div></div><div class="rating-bar"><div class="rb-label">Покрытие</div><div class="rb-track"><div class="rb-fill" style="width:25%;background:var(--red)"></div></div></div><div class="rating-bar"><div class="rb-label">Сервис</div><div class="rb-track"><div class="rb-fill" style="width:45%;background:var(--yellow)"></div></div></div></div>
 <div class="pkg"><div class="pkg-name">Базовый (для ВНЖ)</div><div class="pkg-price">~€65–100/год</div><div class="pkg-details">Покрытие ~€150. 3 визита к специалисту, 1 анализ. Символический полис.</div></div>
 <div class="pkg"><div class="pkg-name">Расширенный</div><div class="pkg-price">от €500/год</div><div class="pkg-details">Реальное покрытие, клиники Euromedic, Aqualab, Medi Group.</div></div>
@@ -370,7 +364,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <h2 class="section-title fade-in">Лайфхаки от экспатов</h2>
 <p class="section-sub fade-in">Советы из реальных Telegram-чатов, проверенные на практике</p>
 
-<div class="lifehack fade-in"><div class="lifehack-tag">Доктор Марко рекомендует</div><h4>📧 Пишите в страховую email на сербском через ChatGPT</h4><p>Опишите симптомы на русском, попросите ChatGPT перевести на сербский + английский, и отправьте одним письмом. Wiener ответил и записал к англоговорящему врачу за 2 недели. Реальный кейс из чата.</p></div>
+<div class="lifehack fade-in"><div class="lifehack-tag">Рекомендация</div><h4>📧 Пишите в страховую email на сербском через ChatGPT</h4><p>Опишите симптомы на русском, попросите ChatGPT перевести на сербский + английский, и отправьте одним письмом. Wiener ответил и записал к англоговорящему врачу за 2 недели. Реальный кейс из чата.</p></div>
 
 <div class="lifehack fade-in"><div class="lifehack-tag">Из чата</div><h4>📱 Вайбер/WhatsApp клиник — обход языкового барьера</h4><p>«Почти в каждой клинике есть Вайбер/WhatsApp. Это на случай языкового барьера» — совет из Telegram-чата. Пишите текстом — проще, чем звонить на сербском.</p></div>
 
@@ -378,46 +372,14 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 
 <div class="lifehack fade-in"><div class="lifehack-tag">Важно</div><h4>📝 Описывайте симптомы письменно на приёме</h4><p>Заранее напишите симптомы на английском и дайте врачу прочитать. «Так проще ничего не забыть по сравнению с устным пересказом. Врач нормально на это отреагировал» — реальный опыт с Wiener.</p></div>
 
-<div class="lifehack fade-in"><div class="lifehack-tag">Сравнение</div><h4>💰 Wiener Basic €90 лучше Dunav за те же деньги</h4><p>«У Wiener хотя бы 6 визитов, лаборатория до €100, УЗИ/рентген до €100 и хитна стоматология. Страховка от Dunav — просто недоразумение за те же деньги» — из Telegram-чата.</p></div>
+<div class="lifehack fade-in"><div class="lifehack-tag">Сравнение</div><h4>💰 Wiener Basic €90 vs Dunav €110: сравнение фактов</h4><p>Wiener Basic: 5 визитов, лаборатория, УЗИ/рентген, хитна стоматология. Лимит €1-3K. Dunav: 3 визита, 1 анализ. Лимит ~€150. При сходной цене покрытие отличается в 20 раз. — из Telegram-чата.</p></div>
 
 <div class="lifehack fade-in"><div class="lifehack-tag">Экстренная помощь</div><h4>🚑 Аппендицит без страховки = 150 000 RSD (~€1280)</h4><p>Реальный кейс из чата: операция + 4 дня в палате в Ургентни Центар. «Отличная палата, забота врачей. Стоимость 150 000 динар.» Со страховкой это было бы бесплатно.</p></div>
 
 <div class="lifehack fade-in"><div class="lifehack-tag">Доктор Марко рекомендует</div><h4>🤝 Подружитесь с сербскими соседями</h4><p>«В экстренной ситуации было к кому обратиться для вызова скорой. Опыт пациентов — при общении на сербском скорая приезжала за 10 минут» — совет врача из чата.</p></div>
 </div></section>
 
-<!-- REVIEWS -->
-<section id="reviews"><div class="container">
-<h2 class="section-title fade-in">Реальные отзывы из чатов</h2>
-<p class="section-sub fade-in">Прямые цитаты из Telegram-групп и Trustpilot</p>
-<div class="cards">
-<div class="glass review fade-in">
-<div class="stars">★★★★☆</div>
-<p>Опыт посещения врача по страховке Wiener за €90. Написала на почту на англ+сербском с помощью ChatGPT. Записали к англоговорящему сосудистому хирургу в New Hospital. Сразу сделал УЗИ, на ресепшне сказали «платить ничего не надо, страховка покрыла». Все-таки не совсем бесполезно потраченные 90 евров 🫡</p>
-<div class="author">— Telegram-чат, реальный опыт, Нови-Сад</div>
-</div>
-<div class="glass review fade-in">
-<div class="stars">★★★★★</div>
-<p>У мужа страховка Generali оплатила удаление родинки. У знакомого по страховке удалили желчный. Процесс согласования занимает 14 дней, запрос подается через врача. И не угадаешь одобрят или нет.</p>
-<div class="author">— Telegram-чат, реальный кейс хирургии</div>
-</div>
-<div class="glass review fade-in">
-<div class="stars">★☆☆☆☆</div>
-<p>«За 17-летнюю дочь заплатил полис Wiener. 3 недели ждал отмены! Деньги сняли, говорят 'не знаем, когда вернут'. Менеджера по-английски нет — повесили трубку.»</p>
-<div class="author">— Trustpilot, Wiener Städtische (рейтинг 1.4★ из 137 отзывов)</div>
-</div>
-<div class="glass review fade-in">
-<div class="stars">★★★☆☆</div>
-<p>«Претензия обработана, но служба поддержки — головная боль». Другой отзыв: «Мошенничество, отказ в выплатах». Третий: получил уведомление о долге €580 за полис 2021 г., хотя «никогда не подписывал второй полис».</p>
-<div class="author">— Trustpilot + Reddit, Dunav Osiguranje (рейтинг 3.1★)</div>
-</div>
-<div class="glass review fade-in">
-<div class="stars">★★★★☆</div>
-<p>Ходила по страховке Wiener к гинекологу Юдиной А.И. в AlfaMedStar. Прием очень комфортный: подробно собрала анамнез, аккуратно взяла анализы, ответила на мои вопросы. Заранее согласовала с Wiener по почте.</p>
-<div class="author">— Telegram-чат, Белград, 2025</div>
-</div>
-</div>
-<p class="fade-in" style="color:var(--text-muted);font-size:.85rem;margin-top:20px">⚠️ Отзывы — прямые цитаты из Telegram-групп экспатов в Сербии и Trustpilot. Не являются рекламой.</p>
-</div></section>
+
 
 <!-- DOCUMENTS CHECKLIST -->
 <section id="docs" style="background:var(--surface)"><div class="container">
@@ -626,17 +588,6 @@ function updateTable(){
   if(max<=0)return;
   tds.forEach(td=>{if(+td.dataset.score===max&&max>=3)td.classList.add('best-cell')});
  });
- // Marko tip
- const uP=document.getElementById('sel-uniqa').value;
- const wP=document.getElementById('sel-wiener').value;
- const tP=document.getElementById('sel-triglav').value;
- let tip=MARKO_TIPS.default;
- if(wP==='basic'&&document.getElementById('sel-dunav').value==='bazicni')tip=MARKO_TIPS.budget;
- if(uP==='elite'||document.getElementById('sel-ddor').value==='zlatni')tip=MARKO_TIPS.fullcover;
- if(tP==='vanb5k'&&(uP==='elegant'||uP==='elite'))tip=MARKO_TIPS.pregnancy;
- const mt=document.getElementById('markoTip');
- document.getElementById('markoText').textContent=tip;
- mt.style.display='flex';mt.classList.add('visible');
 }
 updateTable();
 
