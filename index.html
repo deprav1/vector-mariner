@@ -168,7 +168,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <p>Открытый гайд и калькулятор ДМС для иностранцев с ВНЖ. Реальные данные из чатов, отзывы экспатов, лайфхаки — без маркетинговой воды.</p>
 <div class="hero-badges">
 <div class="badge">🇷🇸 Актуально 2025–2026</div>
-<div class="badge">📋 5 компаний</div>
+<div class="badge">📋 6 компаний</div>
 <div class="badge">💬 Данные из 90+ чатов</div>
 <div class="badge">🔓 Open Source</div>
 </div>
@@ -187,11 +187,12 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <th><div>Triglav</div><select id="sel-triglav" onchange="updateTable()"><option value="vanb1k" selected>Ванб. 1K–5K</option><option value="vanb5k">Ванб+больн. 5K–100K</option></select></th>
 <th><div>Wiener</div><select id="sel-wiener" onchange="updateTable()"><option value="basic" selected>Basic 1K–3K</option><option value="maxima">Maxima 100K</option></select></th>
 <th><div>Dunav</div><select id="sel-dunav" onchange="updateTable()"><option value="bazicni" selected>Базовый (~€110)</option><option value="prosireni">Расширенный (от €500)</option></select></th>
+<th><div>Generali</div><select id="sel-generali" onchange="updateTable()"><option value="stranac" selected>Для иностранцев (€5K)</option><option value="totalmedic">Total Medic</option></select></th>
 </tr></thead>
 <tbody id="compareBody"></tbody>
 </table>
 </div>
-<p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">Цены для 31-35 лет (ж). Источники: ¹ <a href="https://dzo.uniqa.rs" target="_blank">dzo.uniqa.rs</a> · ² <a href="https://www.ddor.rs/osiguranje/dobrovoljno-zdravstveno-osiguranje/zdravo-da-ste/" target="_blank">ddor.rs</a> · ³ <a href="https://dzokalkulator.triglav.rs/DZOwebKalkulator" target="_blank">triglav.rs калькулятор</a> · ⁴ <a href="https://wiener.co.rs/zdravi-i-fit/dobrovoljno-zdravstveno-osiguranje/basic/" target="_blank">wiener.co.rs</a> + <a href="https://srb.guide" target="_blank">srb.guide</a> · ⁵ <a href="https://www.dunav.com/osiguranje/zdravlje/dobrovoljno-zdravstveno-osiguranje" target="_blank">dunav.com</a>. Все цены — ориентиры, точные рассчитываются индивидуально.</p>
+<p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">Цены для 31-35 лет (ж). Источники: ¹ <a href="https://dzo.uniqa.rs" target="_blank">dzo.uniqa.rs</a> · ² <a href="https://www.ddor.rs/osiguranje/dobrovoljno-zdravstveno-osiguranje/zdravo-da-ste/" target="_blank">ddor.rs</a> · ³ <a href="https://dzokalkulator.triglav.rs/DZOwebKalkulator" target="_blank">triglav.rs калькулятор</a> · ⁴ <a href="https://wiener.co.rs/zdravi-i-fit/dobrovoljno-zdravstveno-osiguranje/basic/" target="_blank">wiener.co.rs</a> · ⁵ <a href="https://www.dunav.com/osiguranje/zdravlje/dobrovoljno-zdravstveno-osiguranje" target="_blank">dunav.com</a> · ⁶ <a href="https://www.generali.rs/osiguranje/zdravstvena-osiguranja/dobrovoljno-zdravstveno-osiguranje" target="_blank">generali.rs</a>. Все цены — ориентиры, точные рассчитываются индивидуально.</p>
 
 </div></section>
 
@@ -219,7 +220,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <div style="text-align:center;font-weight:700">142</div>
 <div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 40 позит. · ⚠️ 18 негат.</div>
 
-<div style="font-weight:700;color:var(--yellow)">Generali*</div>
+<div style="font-weight:700">Generali</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,var(--green) 34%,var(--red) 34% 50%,var(--border) 50%);border-radius:4px"></div></div></div>
 <div style="text-align:center;font-weight:700">134</div>
 <div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 46 позит. · ⚠️ 21 негат.</div>
@@ -242,7 +243,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <ul style="list-style:none;padding:0;font-size:.85rem;color:var(--text-muted)">
 <li style="margin-bottom:8px">🏆 <strong style="color:var(--text)">Wiener</strong> — самая обсуждаемая (217 упом.). Популярна для ВНЖ за €90, но сервис вызывает нарекания</li>
 <li style="margin-bottom:8px">📈 <strong style="color:var(--text)">Dunav</strong> — 2-е место (186 упом.). Берут «для галочки» на ВНЖ. Покрытие ~€150 вызывает разочарование при попытке реально использовать</li>
-<li style="margin-bottom:8px">⭐ <strong style="color:var(--text)">Generali</strong> — 134 упоминания, высокий % позитива. Реальные кейсы оплаты операций (удаление родинки, желчного). Не представлена в сравнительной таблице*</li>
+<li style="margin-bottom:8px">⭐ <strong style="color:var(--text)">Generali</strong> — 134 упоминания, высокий % позитива. Реальные кейсы оплаты операций (удаление родинки, желчного). Действует без каренции!</li>
 <li style="margin-bottom:8px">🔍 <strong style="color:var(--text)">UNIQA</strong> — 142 упоминания. Рекомендуют за широкую сеть клиник и англоязычную поддержку</li>
 <li>📉 <strong style="color:var(--text)">Triglav/DDOR</strong> — мало упоминаний (<30). Недостаточно данных для выводов из чатов</li>
 </ul>
@@ -264,7 +265,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 </div>
 </div>
 
-<p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">* Generali активно обсуждается в чатах, но не включена в сравнительную таблицу — нет публичных пакетов ДМС на сайте. Зелёный = позитивные упоминания, красный = негативные, серый = нейтральные/информационные. Анализ: keyword-based, экспорт 26.03.2026.</p>
+<p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">* Сентимент-анализ: keyword-based, экспорт 26.03.2026. Зелёный = позитивные, красный = негативные, серый = нейтральные.</p>
 </div></section>
 <section id="scenarios"><div class="container">
 <h2 class="section-title fade-in">Что если...?</h2>
@@ -337,6 +338,17 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <ul class="pros"><li>Самый дешёвый для галочки</li><li>Офисы по всей Сербии</li></ul>
 <ul class="cons"><li>Базовый = символический</li><li>Мало покрывает без расширения</li></ul>
 <p style="margin-top:16px"><a href="https://dunav.com" target="_blank">🌐 dunav.com</a></p>
+</div>
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#e74c3c">Generali</div>
+<div class="tagline">Для иностранцев: от €10/мес, лимит €5K, действует сразу</div>
+<div class="rating-bars"><div class="rating-bar"><div class="rb-label">Цена</div><div class="rb-track"><div class="rb-fill" style="width:85%;background:var(--green)"></div></div></div><div class="rating-bar"><div class="rb-label">Покрытие</div><div class="rb-track"><div class="rb-fill" style="width:60%;background:var(--yellow)"></div></div></div><div class="rating-bar"><div class="rb-label">Сервис</div><div class="rb-track"><div class="rb-fill" style="width:55%;background:var(--yellow)"></div></div></div></div>
+<div class="pkg"><div class="pkg-name">Для иностранцев (ВНЖ)</div><div class="pkg-price">от ~€10/мес (~€120/год)</div><div class="pkg-details">Лимит €5 000. Амбулатория + стационар (30 дней) + хирургия + рентген + лекарства. Действует на след. день!</div></div>
+<div class="pkg"><div class="pkg-name">Total Medic / Medica Exelenta</div><div class="pkg-price">По запросу</div><div class="pkg-details">Расширенное покрытие до €100K. Из чатов: ~€200/мес на семью из 3 со стационаром.</div></div>
+<ul class="pros"><li>Действует на следующий день (без каренции!)</li><li>Реальные кейсы операций из чатов</li><li>~300 клиник по Сербии</li><li>Можно оформить без ВНЖ</li></ul>
+<ul class="cons"><li>COVID — нестраховой случай (из чата)</li><li>Офтальмолог/стоматология не покрываются</li><li>Хронические = отказ</li><li>Нет онлайн-калькулятора</li></ul>
+<p style="margin-top:16px"><a href="https://www.generali.rs/osiguranje/zdravstvena-osiguranja/dobrovoljno-zdravstveno-osiguranje" target="_blank">🌐 generali.rs</a> · 📞 +381 11 222 0 555</p>
 </div>
 
 </div></div></section>
@@ -474,6 +486,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <tr><td><strong>DDOR</strong></td><td><a href="https://ddor.rs" target="_blank">ddor.rs</a></td><td>021 480 22 00</td><td>zdravodaste@ddor.rs</td><td><a href="https://ddor.rs/zdravo-da-ste" target="_blank">✅ Онлайн</a></td></tr>
 <tr><td><strong>Triglav</strong></td><td><a href="https://www.triglav.rs/osiguranja/fizicka-lica/zdravlje/individualno-i-porodicno-dobrovoljno-zdravstveno-osiguranje" target="_blank">triglav.rs</a></td><td>011 34 04 948</td><td>zdravstvenatacka@triglav.rs</td><td><a href="https://dzokalkulator.triglav.rs/DZOwebKalkulator" target="_blank">✅ Онлайн</a></td></tr>
 <tr><td><strong>Wiener</strong></td><td><a href="https://wiener.co.rs" target="_blank">wiener.co.rs</a></td><td>24/7 Call Center</td><td>Через сайт</td><td>❌ По запросу</td></tr>
+<tr><td><strong>Generali</strong></td><td><a href="https://www.generali.rs" target="_blank">generali.rs</a></td><td>+381 11 222 0 555</td><td>Через сайт</td><td>❌ По запросу</td></tr>
 <tr><td><strong>Dunav</strong></td><td><a href="https://dunav.com" target="_blank">dunav.com</a></td><td>Офисы</td><td>Через сайт</td><td>❌ По запросу</td></tr>
 </tbody>
 </table>
@@ -491,6 +504,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <li>📎 <a href="https://www.ddor.rs/osiguranje/dobrovoljno-zdravstveno-osiguranje/zdravo-da-ste/" target="_blank">DDOR — пакеты Бронза/Серебро/Золото</a></li>
 <li>📎 <a href="https://www.triglav.rs/osiguranja/fizicka-lica/zdravlje/individualno-i-porodicno-dobrovoljno-zdravstveno-osiguranje" target="_blank">Triglav — пакеты + документы</a> · <a href="https://dzokalkulator.triglav.rs/DZOwebKalkulator" target="_blank">калькулятор</a></li>
 <li>📎 <a href="https://wiener.co.rs/zdravi-i-fit/dobrovoljno-zdravstveno-osiguranje/basic/" target="_blank">Wiener Basic</a> · <a href="https://wiener.co.rs/zdravi-i-fit/dobrovoljno-zdravstveno-osiguranje/maxima/" target="_blank">Maxima</a></li>
+<li>📎 <a href="https://www.generali.rs/osiguranje/zdravstvena-osiguranja/dobrovoljno-zdravstveno-osiguranje" target="_blank">Generali — ДЗО для иностранцев + Total Medic</a></li>
 <li>📎 <a href="https://www.dunav.com/osiguranje/zdravlje/dobrovoljno-zdravstveno-osiguranje" target="_blank">Dunav — ДЗО для иностранцев</a></li>
 </ul>
 <p><strong>Ценовые ориентиры:</strong></p>
@@ -590,6 +604,10 @@ const D={
  dunav:{
   bazicni:{price:'~€110/год⁵',limit:'~€150',amb:['w','⚠️ 3 визита'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌'],wait:['y','✅ Сразу'],franch:'15% + до 30%',clinics:['w','Euromedic, Medi'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],psych:['n','❌'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']},
   prosireni:{price:'от €500/год⁵',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅'],severe:['w','⚠️ Уточнять'],chronic:['n','❌'],wait:'Уточнять',franch:'15% + до 30%',clinics:['y','Euromedic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Допунско'],preg:['w','⚠️ Допунско'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']}
+ },
+ generali:{
+  stranac:{price:'от ~€120/год⁶',limit:'€5 000',amb:['y','✅'],hosp:['y','✅ до 30 дней'],severe:['w','⚠️ Частично'],chronic:['n','❌ Искл.'],wait:['y','✅ ~1 день'],franch:'Уточнять',clinics:['y','~300'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
+  totalmedic:{price:'По запросу⁶',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅ Стационар'],severe:['y','✅'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','~300'],eye:['w','⚠️ Уточнять'],dent:['w','⚠️ Уточнять'],preg:['w','⚠️ Уточнять'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']}
  }
 };
 const ROWS=['price','limit','amb','hosp','severe','chronic','wait','franch','clinics','eye','dent','preg','psych','eng','trust','vnz'];
@@ -625,6 +643,10 @@ const TIPS={
  dunav:{
   bazicni:{price:'~8000-13000 RSD/год. Самый дешёвый. По сути — «для галочки» на ВНЖ.',limit:'ВНИМАНИЕ: лимит всего ~€150! Хватит на 1-2 визита. Серьёзная медицина — нет.',amb:'Только 3 визита к специалисту за год + 1 анализ. Крайне ограниченное.',hosp:'Стационар не покрывается вообще.',severe:'Тяжёлые болезни — нет.',chronic:'Хронические — нет.',wait:'Полис действует сразу, без каренции.',franch:'15% базовая + до 30% в зависимости от клиники.',clinics:'Euromedic, Aqualab, Medi Group. Офисы по всей Сербии.',eye:'Офтальмолог не покрывается.',dent:'Стоматология не покрывается вообще.',preg:'Беременность не покрывается.',eng:'Частичная поддержка. Лучше с переводчиком.',trust:'Всего 3 отзыва на Trustpilot. Были жалобы на отказ в выплатах.',vnz:'Основное назначение — для ВНЖ. Символический полис, не реальная защита.'},
   prosireni:{price:'Расширенный пакет. Точная цена по запросу.',limit:'Серьёзный лимит. Реальное покрытие.',amb:'Полная амбулатория без ограничений.',hosp:'Госпитализация, хирургия покрываются.',severe:'Уточнять при оформлении.',chronic:'Хронические исключены.',wait:'Каренция — уточнять.',franch:'Франшиза 15% + до 30%.',clinics:'Euromedic, Aqualab, Medi Group.',eye:'Офтальмология через доп. модуль.',dent:'Стоматология через доп. модуль за доплату.',preg:'Беременность — доп. модуль, уточнять условия.',eng:'Частичная поддержка на английском.',trust:'Мало данных. Требуется осторожность.',vnz:'Для ВНЖ + реальное покрытие (в отличие от базового).'}
+ },
+ generali:{
+  stranac:{price:'Для иностранцев без серб. гражданства. От ~€10/мес. Из чатов: €44 / 3 мес (21 год), €180 / 3 мес (семья из 3).',limit:'€5 000 на человека. Не переносится на след. год. Из чатов: «покрытие больше чем у других».',amb:'Амбулаторное лечение + медикаменты по рецепту + рентген + мед.тех.помагала.',hosp:'Стационар до 30 дней + хирургия. Из чатов: реальные кейсы операций (удаление родинки, желчного).',severe:'Экстренные случаи покрываются. Но: COVID = нестраховой случай (из чата).',chronic:'Исключены. Из чатов: «отказали, ибо болезнь развивалась до начала страховки».',wait:'ГЛАВНОЕ ПРЕИМУЩЕСТВО: действует на следующий день! Без каренции (в отличие от 2 мес UNIQA).',franch:'Не публикуется. Уточняйте при оформлении.',clinics:'~300 медучреждений по Сербии. Из чатов: Bel Medic, Ургентни центар.',eye:'Офтальмолог не покрывается. Из чатов: «проверку зрения ребёнку не покрыла».',dent:'Стоматология не покрывается.',preg:'Беременность не покрывается в пакете для иностранцев.',psych:'Данных о покрытии психиатрии/психологии нет. Уточняйте.',eng:'Частичная поддержка на английском.',trust:'Нет данных Trustpilot. 134 упоминания в чатах, высокий позитив.',vnz:'Основное назначение — для ВНЖ. Можно оформить без ВНЖ.'},
+  totalmedic:{price:'Total Medic — 4 варианта пакетов. Цена индивидуально.',limit:'Максимальное покрытие Generali. ~€200/мес на семью (из чатов).',amb:'Полная амбулатория + лекарства по рецепту.',hosp:'Полный стационар + хирургия. Из чатов: «нормальная страховка с хорошим покрытием и стационаром».',severe:'Покрывает серьёзные случаи в рамках лимита.',chronic:'Исключены. Из чатов: «если болезнь до начала страховки — откажут».',wait:'Уточняйте при оформлении.',franch:'Индивидуально.',clinics:'~300 медучреждений + помощь с записью.',eye:'Уточняйте. Нет публичных данных.',dent:'Уточняйте. В базовом пакете нет.',preg:'Возможно в Total Medic. Уточняйте условия.',psych:'Уточняйте при оформлении.',eng:'Частично.',trust:'134 упоминания в чатах, 34% позитивных. Реальные кейсы оплаты операций.',vnz:'Для ВНЖ + реальное покрытие.'}
  }
 };
 const MARKO_TIPS={
@@ -635,10 +657,10 @@ const MARKO_TIPS={
  family:'Для семьи: UNIQA Elegant (€10K лимит, 560+ клиник, англ. поддержка) — лучший баланс цены и покрытия.'
 };
 function updateTable(){
- const sels={uniqa:document.getElementById('sel-uniqa').value,ddor:document.getElementById('sel-ddor').value,triglav:document.getElementById('sel-triglav').value,wiener:document.getElementById('sel-wiener').value,dunav:document.getElementById('sel-dunav').value};
- const s={uniqa:D.uniqa[sels.uniqa],ddor:D.ddor[sels.ddor],triglav:D.triglav[sels.triglav],wiener:D.wiener[sels.wiener],dunav:D.dunav[sels.dunav]};
+ const sels={uniqa:document.getElementById('sel-uniqa').value,ddor:document.getElementById('sel-ddor').value,triglav:document.getElementById('sel-triglav').value,wiener:document.getElementById('sel-wiener').value,dunav:document.getElementById('sel-dunav').value,generali:document.getElementById('sel-generali').value};
+ const s={uniqa:D.uniqa[sels.uniqa],ddor:D.ddor[sels.ddor],triglav:D.triglav[sels.triglav],wiener:D.wiener[sels.wiener],dunav:D.dunav[sels.dunav],generali:D.generali[sels.generali]};
  let h='';
- const COS=['uniqa','ddor','triglav','wiener','dunav'];
+ const COS=['uniqa','ddor','triglav','wiener','dunav','generali'];
  ROWS.forEach((k,i)=>{
   h+=`<tr><td><strong>${LABELS[i]}</strong></td>`;
   COS.forEach(co=>{h+=cell(s[co][k],co,sels[co],k)});
