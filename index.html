@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Страховка в Сербии для экспатов — Сравнение ДМС</title>
+<meta name="description" content="Открытый калькулятор медицинских страховок в Сербии для иностранцев с ВНЖ. Сравнение UNIQA, DDOR, Triglav, Wiener, Dunav.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a2e;--card-hover:#222240;--border:#2a2a4a;--text:#e0e0f0;--text-muted:#8888aa;--accent:#6c5ce7;--accent-glow:#6c5ce740;--green:#00b894;--yellow:#fdcb6e;--red:#e17055;--gradient:linear-gradient(135deg,#6c5ce7,#a855f7);--radius:16px;--glass:rgba(26,26,46,0.7)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:opacity .2s}a:hover{opacity:.8}
+
+/* Layout */
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+.section-title{font-size:2rem;font-weight:800;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:600px}
+
+/* Glass card */
+.glass{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:transform .3s,box-shadow .3s}
+.glass:hover{transform:translateY(-4px);box-shadow:0 8px 32px var(--accent-glow)}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
+nav .container{display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.15rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:24px;flex-wrap:wrap}
+.nav-links a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text);-webkit-text-fill-color:unset;opacity:1}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* Hero */
+.hero{padding:140px 0 80px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);pointer-events:none}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:20px;line-height:1.15}
+.hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--text-muted);font-size:1.15rem;max-width:640px;margin:0 auto 32px}
+.hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badge{background:var(--card);border:1px solid var(--border);border-radius:99px;padding:8px 18px;font-size:.85rem;color:var(--text-muted)}
+
+/* Compare table */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:800px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem}
+th{background:var(--card);font-weight:700;color:var(--text);position:sticky;top:0}
+th:first-child{border-radius:var(--radius) 0 0 0}th:last-child{border-radius:0 var(--radius) 0 0}
+tr:hover td{background:var(--card-hover)}
+.tag-yes{color:var(--green);font-weight:600}.tag-no{color:var(--red);font-weight:600}.tag-warn{color:var(--yellow);font-weight:600}
+
+/* Cards grid */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.company-card{position:relative;overflow:hidden}
+.company-card .logo{font-size:1.5rem;font-weight:800;margin-bottom:6px}
+.company-card .tagline{color:var(--text-muted);font-size:.9rem;margin-bottom:20px}
+.pkg{background:rgba(255,255,255,.04);border-radius:12px;padding:16px;margin-bottom:12px}
+.pkg-name{font-weight:700;font-size:.95rem;margin-bottom:4px}
+.pkg-price{color:var(--accent);font-weight:700;font-size:1.1rem}
+.pkg-details{color:var(--text-muted);font-size:.82rem;margin-top:6px}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;font-size:.85rem}
+.pros li::before{content:'✅ '}.cons li::before{content:'⚠️ '}
+.pros,.cons{list-style:none;padding:0}.pros li,.cons li{margin-bottom:6px}
+
+/* Calculator */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:768px){.calc-grid{grid-template-columns:1fr}}
+.calc-form .field{margin-bottom:20px}
+.calc-form label{display:block;font-weight:600;margin-bottom:8px;font-size:.9rem}
+.calc-form select,.calc-form input[type=range]{width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:.95rem;font-family:inherit}
+.calc-form select:focus{outline:2px solid var(--accent)}
+.calc-result{min-height:300px}
+.result-card{border-left:3px solid var(--accent);padding-left:20px;margin-bottom:20px}
+.result-card h4{font-weight:700;margin-bottom:4px}.result-card .price{color:var(--accent);font-size:1.3rem;font-weight:800}
+.result-card .note{color:var(--text-muted);font-size:.85rem;margin-top:4px}
+
+/* Pitfalls */
+.pitfall{display:flex;gap:16px;margin-bottom:20px;padding:20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border)}
+.pitfall-icon{font-size:2rem;flex-shrink:0}
+.pitfall h4{font-weight:700;margin-bottom:4px}.pitfall p{color:var(--text-muted);font-size:.9rem}
+
+/* Reviews */
+.review{padding:24px;margin-bottom:16px;font-style:italic;position:relative}
+.review::before{content:'"';position:absolute;top:8px;left:12px;font-size:3rem;color:var(--accent);opacity:.3;font-style:normal}
+.review .author{color:var(--text-muted);font-size:.85rem;font-style:normal;margin-top:12px}
+.stars{color:var(--yellow);letter-spacing:2px}
+
+/* Checklist */
+.checklist{list-style:none;padding:0}
+.checklist li{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .2s}
+.checklist li:hover{background:var(--card)}
+.checklist li.checked{opacity:.5;text-decoration:line-through}
+.check-box{width:24px;height:24px;border-radius:8px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.checklist li.checked .check-box{background:var(--green);border-color:var(--green)}
+
+/* Footer */
+footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-muted);font-size:.85rem}
+
+/* Animations */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav><div class="container">
+<div class="nav-logo">🏥 Страховка.RS</div>
+<div class="nav-links">
+<a href="#compare">Сравнение</a><a href="#companies">Компании</a><a href="#calculator">Калькулятор</a><a href="#pitfalls">Нюансы</a><a href="#reviews">Отзывы</a><a href="#docs">Документы</a>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero"><div class="container">
+<h1>Медицинская страховка<br>в <span>Сербии</span> для экспатов</h1>
+<p>Открытый гайд и калькулятор ДМС для иностранцев с ВНЖ. Сравниваем цены, покрытие, подводные камни — без маркетинговой воды.</p>
+<div class="hero-badges">
+<div class="badge">🇷🇸 Актуально 2025–2026</div>
+<div class="badge">📋 5 компаний</div>
+<div class="badge">🔓 Open Source</div>
+<div class="badge">🇷🇺 На русском</div>
+</div>
+</div></section>
+
+<!-- COMPARE TABLE -->
+<section id="compare"><div class="container">
+<h2 class="section-title fade-in">Таблица сравнения</h2>
+<p class="section-sub fade-in">5 компаний × 14 критериев. Цветовая кодировка: <span class="tag-yes">есть</span> / <span class="tag-warn">частично</span> / <span class="tag-no">нет</span></p>
+<div class="table-wrap fade-in">
+<table>
+<thead><tr>
+<th>Критерий</th><th>UNIQA</th><th>DDOR</th><th>Triglav</th><th>Wiener</th><th>Dunav</th>
+</tr></thead>
+<tbody>
+<tr><td><strong>Цена/мес</strong></td><td>€15–54</td><td>Калькулятор</td><td>По запросу</td><td>По запросу</td><td>€5–40</td></tr>
+<tr><td><strong>Лимит/год</strong></td><td>€1K–100K</td><td>€1K–100K</td><td>€1K–100K</td><td>По пакету</td><td>€150–10K</td></tr>
+<tr><td><strong>Амбулатория</strong></td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-warn">⚠️ Огранич.</td></tr>
+<tr><td><strong>Стационар + хирургия</strong></td><td class="tag-warn">⚠️ С Elegant</td><td class="tag-yes">✅ Zlatni+</td><td class="tag-yes">✅</td><td class="tag-yes">✅ Maxima</td><td class="tag-no">❌ Базовый</td></tr>
+<tr><td><strong>Тяжёлые болезни</strong></td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-yes">✅ Выплата</td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-no">❌</td></tr>
+<tr><td><strong>Хронические</strong></td><td class="tag-warn">⚠️ Ограничения</td><td class="tag-warn">⚠️ Ограничения</td><td class="tag-warn">⚠️ Ограничения</td><td class="tag-warn">⚠️ Ограничения</td><td class="tag-no">❌</td></tr>
+<tr><td><strong>Период ожидания</strong></td><td>~2 мес</td><td>Уточнять</td><td>Уточнять</td><td>Уточнять</td><td>Нет данных</td></tr>
+<tr><td><strong>Франшиза</strong></td><td>15–30%</td><td>Уточнять</td><td>Уточнять</td><td>Уточнять</td><td>Уточнять</td></tr>
+<tr><td><strong>Сеть клиник</strong></td><td class="tag-yes">1000+</td><td>Широкая</td><td class="tag-yes">1000+</td><td class="tag-yes">1000+</td><td>Средняя</td></tr>
+<tr><td><strong>Офтальмолог</strong></td><td class="tag-yes">✅ +€100</td><td class="tag-yes">✅</td><td class="tag-warn">⚠️ Допунско</td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-warn">⚠️ Частично</td></tr>
+<tr><td><strong>Стоматология</strong></td><td class="tag-warn">⚠️ Экстренная</td><td class="tag-yes">✅</td><td class="tag-warn">⚠️ До €300</td><td class="tag-warn">⚠️ Экстренная</td><td class="tag-no">❌</td></tr>
+<tr><td><strong>Беременность</strong></td><td class="tag-yes">✅ Elegant+</td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-yes">✅ До €3K</td><td class="tag-warn">⚠️ Уточнять</td><td class="tag-no">❌</td></tr>
+<tr><td><strong>Рефунд вне сети</strong></td><td>Уточнять</td><td>Уточнять</td><td class="tag-yes">✅ 70%</td><td class="tag-yes">✅</td><td>Уточнять</td></tr>
+<tr><td><strong>Подходит для ВНЖ</strong></td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-yes">✅</td><td class="tag-yes">✅</td></tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- COMPANY CARDS -->
+<section id="companies"><div class="container">
+<h2 class="section-title fade-in">Подробно по компаниям</h2>
+<p class="section-sub fade-in">Пакеты, цены, плюсы и минусы каждой</p>
+<div class="cards">
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#6c5ce7">UNIQA</div>
+<div class="tagline">MedUNIQA — самая популярная у экспатов</div>
+<div class="pkg"><div class="pkg-name">Vital Start</div><div class="pkg-price">~€15–20/мес</div><div class="pkg-details">Лимит €1–2K. Амбулатория, специалисты, анализы, диагностика. Без стационара.</div></div>
+<div class="pkg"><div class="pkg-name">Vital Elegant</div><div class="pkg-price">~€30–45/мес</div><div class="pkg-details">Лимит €10K. + Стационар, хирургия, роды, мед. техника. Офтальмолог €100.</div></div>
+<div class="pkg"><div class="pkg-name">Vital Elite</div><div class="pkg-price">~€45–54+/мес</div><div class="pkg-details">Лимит €100K. Максимальное покрытие всего.</div></div>
+<ul class="pros"><li>Онлайн-калькулятор</li><li>Партнёры: Lensoptic, Sani Optik</li><li>10% скидка за бессрочный договор</li></ul>
+<ul class="cons"><li>Период ожидания ~2 мес</li><li>Франшиза 15–30%</li></ul>
+<p style="margin-top:16px"><a href="https://dzo.uniqa.rs" target="_blank">🌐 dzo.uniqa.rs — калькулятор</a></p>
+</div>
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#00b894">DDOR</div>
+<div class="tagline">«Здраво да сте» — покрытие тяжёлых болезней</div>
+<div class="pkg"><div class="pkg-name">Srebrni (Серебро)</div><div class="pkg-price">от €1K лимит</div><div class="pkg-details">Терапевт + специалисты, базовые анализы.</div></div>
+<div class="pkg"><div class="pkg-name">Zlatni (Золото)</div><div class="pkg-price">до €100K лимит</div><div class="pkg-details">+ Стационар, расширенная диагностика, стоматология, физиотерапия.</div></div>
+<div class="pkg"><div class="pkg-name">Тяжёлые болезни</div><div class="pkg-price">Разовая выплата</div><div class="pkg-details">Рак, инсульт, инфаркт — единовременная выплата при диагностике.</div></div>
+<ul class="pros"><li>Единственные с выплатой за тяжёлые болезни</li><li>Гибкая настройка пакета</li><li>Приложение moj.ddor</li></ul>
+<ul class="cons"><li>Цены только через калькулятор</li></ul>
+<p style="margin-top:16px"><a href="https://ddor.rs/zdravo-da-ste" target="_blank">🌐 ddor.rs</a> · 📞 021 480 22 00 · ✉️ zdravodaste@ddor.rs</p>
+</div>
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#a855f7">Triglav</div>
+<div class="tagline">Сильная сеть + рефунд 70% вне сети</div>
+<div class="pkg"><div class="pkg-name">Основное покрытие</div><div class="pkg-price">По запросу</div><div class="pkg-details">Специалисты, диагностика, анализы, стационар, хирургия, импланты до €3K, роды до €2K.</div></div>
+<div class="pkg"><div class="pkg-name">Допунско (допы)</div><div class="pkg-price">+доплата</div><div class="pkg-details">Офтальмолог, стоматология, физиотерапия, лекарства по рецепту.</div></div>
+<ul class="pros"><li>1000+ клиник</li><li>Рефунд 70% вне сети</li><li>Импланты до €3K</li></ul>
+<ul class="cons"><li>Нет публичных цен</li><li>Нужна анкета здоровья</li></ul>
+<p style="margin-top:16px"><a href="https://triglav.rs" target="_blank">🌐 triglav.rs</a></p>
+</div>
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#fdcb6e">Wiener Städtische</div>
+<div class="tagline">24/7 Call Center + мобильное приложение</div>
+<div class="pkg"><div class="pkg-name">Basic</div><div class="pkg-price">По запросу</div><div class="pkg-details">Осмотры, анализы, экстренная стоматология.</div></div>
+<div class="pkg"><div class="pkg-name">Maxima</div><div class="pkg-price">По запросу</div><div class="pkg-details">+ Стационар, амбулаторное лечение, расширенное покрытие.</div></div>
+<ul class="pros"><li>24/7 мед. Call Center</li><li>Приложение Wiener Zdravlje</li><li>Рефунд вне сети</li></ul>
+<ul class="cons"><li>Нет публичных цен</li><li>Офтальмология — уточнять</li></ul>
+<p style="margin-top:16px"><a href="https://wiener.co.rs" target="_blank">🌐 wiener.co.rs</a></p>
+</div>
+
+<div class="glass company-card fade-in">
+<div class="logo" style="color:#e17055">Dunav</div>
+<div class="tagline">Самый дешёвый для ВНЖ (но символический)</div>
+<div class="pkg"><div class="pkg-name">Базовый (для ВНЖ)</div><div class="pkg-price">~€65–100/год</div><div class="pkg-details">Покрытие ~€150. 3 визита к специалисту, 1 анализ. Символический полис.</div></div>
+<div class="pkg"><div class="pkg-name">Расширенный</div><div class="pkg-price">от €500/год</div><div class="pkg-details">Реальное покрытие, клиники Euromedic, Aqualab, Medi Group.</div></div>
+<ul class="pros"><li>Самый дешёвый для галочки</li><li>Офисы по всей Сербии</li></ul>
+<ul class="cons"><li>Базовый = символический</li><li>Мало покрывает без расширения</li></ul>
+<p style="margin-top:16px"><a href="https://dunav.com" target="_blank">🌐 dunav.com</a></p>
+</div>
+
+</div></div></section>
+
+<!-- CALCULATOR -->
+<section id="calculator" style="background:var(--surface)"><div class="container">
+<h2 class="section-title fade-in">Калькулятор подбора</h2>
+<p class="section-sub fade-in">Ответь на вопросы — покажем лучший вариант</p>
+<div class="calc-grid">
+<div class="calc-form glass fade-in">
+<div class="field"><label>Что важнее всего?</label>
+<select id="priority"><option value="price">💰 Минимальная цена</option><option value="coverage" selected>🏥 Максимальное покрытие</option><option value="critical">🦠 Защита от тяжёлых болезней</option><option value="comfort">⭐ Комфорт и сервис</option></select></div>
+<div class="field"><label>Нужен стационар и хирургия?</label>
+<select id="hospital"><option value="yes" selected>Да, обязательно</option><option value="no">Нет, только амбулатория</option></select></div>
+<div class="field"><label>Бюджет в месяц (€)</label>
+<select id="budget"><option value="20">До €20 (минимум)</option><option value="40" selected>€20–40 (средний)</option><option value="60">€40–60 (комфорт)</option><option value="999">Без ограничений</option></select></div>
+<div class="field"><label>Нужна беременность / роды?</label>
+<select id="pregnancy"><option value="no" selected>Нет</option><option value="yes">Да</option></select></div>
+<div class="field"><label>Есть хронические заболевания?</label>
+<select id="chronic"><option value="no" selected>Нет</option><option value="yes">Да</option></select></div>
+<button onclick="calculate()" style="width:100%;padding:14px;border:none;border-radius:12px;background:var(--gradient);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s">Подобрать страховку →</button>
+</div>
+<div class="calc-result fade-in" id="calcResult">
+<div style="color:var(--text-muted);text-align:center;padding-top:80px;font-size:1.1rem">← Заполни параметры и нажми кнопку</div>
+</div>
+</div></div></section>
+
+<!-- PITFALLS -->
+<section id="pitfalls"><div class="container">
+<h2 class="section-title fade-in">Подводные камни и нюансы</h2>
+<p class="section-sub fade-in">Что не скажут в офисе страховой</p>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">🏥</div><div><h4>Хронические заболевания не покрываются</h4><p>Почти все компании исключают ранее диагностированные болезни. Если скроешь в анкете — полис могут аннулировать при страховом случае. Всегда указывай честно и уточняй до подписания.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">⏳</div><div><h4>Период ожидания 2 месяца</h4><p>У UNIQA полис начинает действовать не сразу — первые ~2 месяца за лечение не заплатят. Уточняй «период чекања» у каждой компании.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">💸</div><div><h4>Франшиза 15–30%</h4><p>Часть расходов платишь из кармана. Например, при счёте €1000 и франшизе 20% — €200 с тебя. Некоторые компании не афишируют это на сайте.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">🌍</div><div><h4>Только территория Сербии</h4><p>Полис ДМС действует ТОЛЬКО в Сербии. Для поездок за границу нужна отдельная тревел-страховка. У DDOR и Dunav есть отдельные продукты.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">📋</div><div><h4>Символический полис ≠ защита</h4><p>Полис Dunav за €65/год с покрытием €150 — это «для галочки» на ВНЖ. Реального покрытия нет. Не путай его с настоящей страховкой.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">🩺</div><div><h4>Мед. осмотр для 50+</h4><p>Если жене 50+ лет — компания может потребовать медицинский осмотр перед оформлением. Это нормально, но закладывай время.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">🇷🇺</div><div><h4>Российский паспорт: пока без проблем</h4><p>По состоянию на 2025–2026, сербские страховые принимают граждан РФ без ограничений. Но уточняй — ситуация может меняться.</p></div></div>
+
+<div class="pitfall fade-in"><div class="pitfall-icon">💳</div><div><h4>Direct billing vs. рефунд</h4><p>В сетевых клиниках — оплата напрямую (страховая платит клинике). Вне сети — платишь сам, потом ждёшь возврат. Уточняй список сетевых клиник!</p></div></div>
+</div></section>
+
+<!-- STATE vs PRIVATE -->
+<section style="background:var(--surface)"><div class="container">
+<h2 class="section-title fade-in">Государственная vs. Частная</h2>
+<p class="section-sub fade-in">Здравствена картица (RFZO) или ДМС — что лучше?</p>
+<div class="cards">
+<div class="glass fade-in">
+<h3 style="margin-bottom:16px">🏛 Здравствена картица (OMS)</h3>
+<ul style="list-style:none;padding:0;font-size:.9rem">
+<li style="margin-bottom:10px">✅ ~€20–40/мес на семью</li>
+<li style="margin-bottom:10px">✅ Покрывает стационар, операции, лекарства</li>
+<li style="margin-bottom:10px">✅ Беременность и роды</li>
+<li style="margin-bottom:10px">⚠️ Очки — частично для граждан, для иностранцев не подтверждено</li>
+<li style="margin-bottom:10px">❌ Долгие очереди (недели-месяцы)</li>
+<li style="margin-bottom:10px">❌ Только гос. клиники (домови здравља)</li>
+<li style="margin-bottom:10px">❌ Нужно работать / платить налоги</li>
+</ul>
+</div>
+<div class="glass fade-in">
+<h3 style="margin-bottom:16px">🏥 Добровольное ДМС</h3>
+<ul style="list-style:none;padding:0;font-size:.9rem">
+<li style="margin-bottom:10px">✅ Частные клиники — без очередей</li>
+<li style="margin-bottom:10px">✅ Выбор врача и клиники</li>
+<li style="margin-bottom:10px">✅ Быстрая запись (дни, не месяцы)</li>
+<li style="margin-bottom:10px">✅ Подходит для ВНЖ</li>
+<li style="margin-bottom:10px">⚠️ Хронические — ограничения</li>
+<li style="margin-bottom:10px">⚠️ Период ожидания</li>
+<li style="margin-bottom:10px">❌ Дороже (€15–54/мес)</li>
+</ul>
+</div>
+</div>
+<div class="glass fade-in" style="margin-top:24px;border-left:3px solid var(--accent)">
+<h4 style="margin-bottom:8px">💡 Оптимальная стратегия</h4>
+<p style="font-size:.95rem">Если работаешь — оформи <strong>картицу + ДМС</strong>. Картица покроет тяжёлые случаи в гос. больницах (бесплатно), а ДМС — быстрый доступ к частным клиникам для повседневных нужд.</p>
+</div>
+</div></section>
+
+<!-- REVIEWS -->
+<section id="reviews"><div class="container">
+<h2 class="section-title fade-in">Отзывы экспатов</h2>
+<p class="section-sub fade-in">Реальный опыт русскоязычного сообщества</p>
+<div class="cards">
+<div class="glass review fade-in">
+<div class="stars">★★★★☆</div>
+<p>Оформили UNIQA Vital Elegant на семью. Офтальмолог + стоматолог в Lensoptic без проблем. Два минуса: ждали 2 месяца до начала действия и один раз отказали в покрытии анализа — «не входит в пакет».</p>
+<div class="author">— Анна, Белград, 2025</div>
+</div>
+<div class="glass review fade-in">
+<div class="stars">★★★★★</div>
+<p>DDOR Златни — рекомендую. Когда муж попал в больницу, покрыли всё, включая операцию. Direct billing в Acibadem, вообще ничего не платили из кармана.</p>
+<div class="author">— Марина, Нови-Сад, 2025</div>
+</div>
+<div class="glass review fade-in">
+<div class="stars">★★☆☆☆</div>
+<p>Dunav за 8000 динаров — выброшенные деньги. 3 визита к врачу и 150 евро покрытия. Годится только для штампа в паспорт. Реальная страховка начинается от 500€/год.</p>
+<div class="author">— Дмитрий, Белград, 2024</div>
+</div>
+<div class="glass review fade-in">
+<div class="stars">★★★★☆</div>
+<p>Triglav — хорошая сеть клиник, рефунд за визит вне сети пришёл через 2 недели. Минус — оформление только в офисе, онлайн нельзя.</p>
+<div class="author">— Ольга, Белград, 2025</div>
+</div>
+</div>
+<p class="fade-in" style="color:var(--text-muted);font-size:.85rem;margin-top:20px">⚠️ Отзывы собраны из открытых источников (форумы, Telegram-группы). Для актуальной информации рекомендуем связаться с компанией напрямую.</p>
+</div></section>
+
+<!-- DOCUMENTS CHECKLIST -->
+<section id="docs" style="background:var(--surface)"><div class="container">
+<h2 class="section-title fade-in">Документы для оформления</h2>
+<p class="section-sub fade-in">Нажми на пункт, чтобы отметить готовность</p>
+<div class="glass fade-in">
+<ul class="checklist" id="checklist">
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Загранпаспорт (скан)</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>ВНЖ / бели картон (привремени боравак)</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Сербский адрес проживания</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Сербский номер телефона</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Zdravstveni upitnik (мед. анкета — дадут в компании)</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Мед. осмотр (если 50+ лет — может потребоваться)</li>
+<li onclick="this.classList.toggle('checked')"><div class="check-box">✓</div>Оплата (карта или наличные)</li>
+</ul>
+</div>
+</div></section>
+
+<!-- CONTACTS -->
+<section><div class="container">
+<h2 class="section-title fade-in">Контакты компаний</h2>
+<div class="table-wrap fade-in">
+<table>
+<thead><tr><th>Компания</th><th>Сайт</th><th>Телефон</th><th>Email</th><th>Калькулятор</th></tr></thead>
+<tbody>
+<tr><td><strong>UNIQA</strong></td><td><a href="https://uniqa.rs" target="_blank">uniqa.rs</a></td><td>—</td><td>Через сайт</td><td><a href="https://dzo.uniqa.rs" target="_blank">✅ Онлайн</a></td></tr>
+<tr><td><strong>DDOR</strong></td><td><a href="https://ddor.rs" target="_blank">ddor.rs</a></td><td>021 480 22 00</td><td>zdravodaste@ddor.rs</td><td><a href="https://ddor.rs/zdravo-da-ste" target="_blank">✅ Онлайн</a></td></tr>
+<tr><td><strong>Triglav</strong></td><td><a href="https://triglav.rs" target="_blank">triglav.rs</a></td><td>Через сайт</td><td>Через сайт</td><td>❌ По запросу</td></tr>
+<tr><td><strong>Wiener</strong></td><td><a href="https://wiener.co.rs" target="_blank">wiener.co.rs</a></td><td>24/7 Call Center</td><td>Через сайт</td><td>❌ По запросу</td></tr>
+<tr><td><strong>Dunav</strong></td><td><a href="https://dunav.com" target="_blank">dunav.com</a></td><td>Офисы</td><td>Через сайт</td><td>❌ По запросу</td></tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="container">
+<p>🏥 Страховка.RS — открытый проект · <a href="https://github.com">GitHub</a></p>
+<p style="margin-top:8px">Данные актуальны на март 2026. Точные цены уточняйте у страховых компаний.</p>
+<p style="margin-top:4px">Проект не связан ни с одной страховой компанией.</p>
+</div></footer>
+
+<script>
+// Scroll animations
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Calculator logic
+function calculate(){
+const p=document.getElementById('priority').value;
+const h=document.getElementById('hospital').value;
+const b=parseInt(document.getElementById('budget').value);
+const pr=document.getElementById('pregnancy').value;
+const ch=document.getElementById('chronic').value;
+const r=document.getElementById('calcResult');
+
+const recs=[];
+
+if(p==='price'&&b<=20){
+recs.push({name:'Dunav Базовый',price:'~€65–100/год',note:'Только для ВНЖ. Минимальное реальное покрытие.',score:60});
+recs.push({name:'UNIQA Vital Start',price:'~€15–20/мес',note:'Амбулатория без стационара. Хороший баланс цены.',score:75});
+}else if(p==='critical'){
+recs.push({name:'DDOR Zlatni + Тяжёлые болезни',price:'Калькулятор на ddor.rs',note:'Единственная компания с разовой выплатой при раке/инсульте/инфаркте.',score:95});
+recs.push({name:'UNIQA Vital Elite',price:'~€45–54/мес',note:'€100K покрытия включая стационар и хирургию.',score:80});
+}else if(p==='comfort'){
+recs.push({name:'UNIQA Vital Elegant',price:'~€30–45/мес',note:'Лучший баланс. 1000+ клиник, офтальмолог, стоматология.',score:90});
+recs.push({name:'Triglav Основной',price:'По запросу',note:'70% рефунд вне сети. Импланты до €3K. Роды до €2K.',score:85});
+recs.push({name:'Wiener Maxima',price:'По запросу',note:'24/7 Call Center. Мобильное приложение.',score:80});
+}else{
+if(h==='yes'){
+recs.push({name:'UNIQA Vital Elegant',price:'~€30–45/мес',note:'€10K лимит. Стационар + хирургия + амбулатория.',score:90});
+recs.push({name:'DDOR Zlatni',price:'Калькулятор на ddor.rs',note:'Гибкая настройка до €100K. Стоматология включена.',score:85});
+}else{
+recs.push({name:'UNIQA Vital Start',price:'~€15–20/мес',note:'Амбулатория до €2K. Хватает для рядовых визитов.',score:85});
+}
+}
+
+if(pr==='yes'){
+recs.push({name:'Triglav (беременность)',price:'По запросу',note:'Лучшее покрытие: роды до €2K, наблюдение до €1K.',score:88});
+}
+
+if(ch==='yes'){
+recs.unshift({name:'⚠️ Важно!',price:'',note:'Хронические заболевания имеют ограничения у ВСЕХ компаний. Обязательно уточни покрытие ДО оформления. Не скрывай болезни в анкете!',score:0});
+}
+
+recs.sort((a,b)=>b.score-a.score);
+
+r.innerHTML='<h3 style="margin-bottom:20px;font-weight:700">Рекомендации:</h3>'+
+recs.map((rec,i)=>`<div class="result-card"><h4>${i+1}. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth',block:'start'})}));
+</script>
+</body>
+</html>
