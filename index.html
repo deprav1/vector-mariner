@@ -585,8 +585,6 @@ finalRecs.sort((a,b)=>b.score-a.score);
 r.innerHTML='<h3 style="margin-bottom:20px;font-weight:700">Рекомендации (топ совпадений):</h3>'+
 finalRecs.slice(0, 5).map((rec,i)=>`<div class="result-card"><h4>${i+1}. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
 }
-. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
-}
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth',block:'start'})}));
