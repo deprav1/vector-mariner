@@ -865,8 +865,6 @@ const REV_ORDER=['wiener','dunav','uniqa','generali','triglav','ddor'];
 let curRevTab='wiener';
 
 function initReviews(){
- const total=REV_ORDER.reduce((s,k)=>s+REVIEWS[k].length,0);
- document.querySelector('.rev-count-total').textContent=`(${total} цитат)`;
  const tabs=document.getElementById('revTabs');
  REV_ORDER.forEach(k=>{
   const b=document.createElement('button');
