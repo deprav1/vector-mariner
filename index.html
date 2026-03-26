@@ -174,6 +174,17 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 .rev-item .rev-mood{font-size:.75rem;margin-bottom:4px;color:var(--text-muted)}
 .rev-item .rev-text{color:var(--text);font-style:italic}
 .rev-item .rev-meta{font-size:.72rem;color:var(--text-muted);margin-top:6px}
+
+/* Review Mode Toggle & Button */
+.rev-mode-toggle input:checked + span {
+  background: white !important;
+  color: var(--primary) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+#loadMoreReviews:hover {
+  background: var(--primary-hover) !important;
+}
+.rev-close:hover { color: #0f172a !important; }
 </style>
 </head>
 <body>
@@ -299,9 +310,29 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 </div>
 <div class="reviews-panel" id="revPanel">
 <div class="glass" style="padding:24px">
-<p style="color:var(--text-muted);font-size:.78rem;margin-bottom:14px">Выборка характерных цитат из Telegram-чатов, Trustpilot и аналитики. Полный экспорт — 722 упоминания за 2021–2026 гг.</p>
+<div class="rev-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+  <h2 style="margin:0; font-size:1.4rem;">Отзывы и упоминания (Telegram)</h2>
+  <button class="rev-close" id="closeReviews" onclick="toggleReviews()" style="background:none; border:none; font-size:1.8rem; cursor:pointer; color:#64748b;">×</button>
+</div>
+
+<p style="color:var(--text-muted);font-size:.85rem;margin-bottom:16px;line-height:1.4;">
+  Мы собрали <strong>576 упоминаний</strong> страховых компаний из чатов экспатов в Сербии за 2024-2026 годы. Вы можете читать краткие выжимки или полный дамп.
+</p>
+
+<div class="rev-mode-toggle" style="display:flex; gap:12px; margin-bottom:20px; background:#f1f5f9; padding:6px; border-radius:8px;">
+  <label style="flex:1; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative;">
+    <input type="radio" name="revMode" value="curated" checked style="display:none;"> 
+    <span style="width:100%; text-align:center; padding:8px; border-radius:6px; font-size:0.9rem; font-weight:500; color:#64748b; transition:all 0.2s ease;">⭐️ Избранные (45)</span>
+  </label>
+  <label style="flex:1; display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative;">
+    <input type="radio" name="revMode" value="raw" style="display:none;"> 
+    <span style="width:100%; text-align:center; padding:8px; border-radius:6px; font-size:0.9rem; font-weight:500; color:#64748b; transition:all 0.2s ease;">💬 Все сырые (576)</span>
+  </label>
+</div>
+
 <div class="rev-tabs" id="revTabs"></div>
 <div class="rev-list" id="revList"></div>
+<button id="loadMoreReviews" style="display:none; width:100%; border:none; background:var(--primary); color:white; padding:12px; border-radius:8px; margin-top:16px; cursor:pointer; font-weight:500; transition: background 0.2s;">Показать ещё</button>
 </div>
 </div>
 
@@ -567,6 +598,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <p style="margin-top:4px">Проект не связан ни с одной страховой компанией. Все отзывы — реальные цитаты.</p>
 </div></footer>
 
+<script src="reviews-data.js"></script>
 <script>
 // Scroll animations
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.1});
@@ -801,87 +833,69 @@ SCENARIOS.forEach((sc,i)=>{
 });
 
 // === RAW REVIEWS ===
-const REVIEWS={
- wiener:[
-  {mood:'pos',text:'Делала УЗИ по страховке Wiener — покрыли полностью, даже не пришлось доплачивать. Записалась через email на сербском (ChatGPT помог перевести), ответили за 2 дня.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Wiener Basic за ~136 евро/год — для ВНЖ самое то. 5 визитов + анализы + экстренная стоматология. Действует сразу, без каренции.',meta:'Telegram, 2026'},
-  {mood:'pos',text:'Страховку от Wiener со стоматологией можно брать только если сравнить со стоимостью лечения. У меня покрыло ультразвуковую чистку.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Wiener на Trustpilot 1.4 звезды не зря. Пытался получить рефунд за анализы — гоняли два месяца, в итоге заплатили только 70%.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Wiener — никакой англоязычной поддержки. Только сербский. Для тех, кто языка не знает — это реальная боль.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Wiener: направление от терапевта нужно на КАЖДЫЙ анализ. Даже на банальный ОАК. Лишний визит и время.',meta:'Telegram, 2026'},
-  {mood:'neu',text:'Wiener Basic M1 — самый дешёвый со «взрослым» покрытием. Но лимит €1K — хватит на 3-4 визита максимум.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'Wiener через Bel Medic и Medi Group — франшиза 30%. То есть при счёте 100 евро — 30 из кармана.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Wiener: наблюдение беременности покрывает начиная с M2 (лимит 2K). У нас все УЗИ и анализы прошли по страховке.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Wiener: хронические заболевания — полный отказ. Указал гастрит в анкете, этот диагноз полностью исключили из покрытия.',meta:'Telegram, 2026'}
- ],
- dunav:[
-  {mood:'neu',text:'Дунав самая дешёвая (~90 евро/год), берут для ВНЖ, но покрытие 150 евро только. Это «для галочки».',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Полис Dunav — 3 визита к специалисту за год и 1 анализ. При лимите 150 евро это не страховка, а бумажка.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Попытался использовать Дунав для КТ — «не входит в ваш пакет». А что входит за 110 евро в год? Почти ничего.',meta:'Telegram, 2026'},
-  {mood:'pos',text:'Dunav: офисы есть буквально везде, даже в маленьких городах. Оформили за 20 минут.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'Для ВНЖ подошёл Dunav — оформили быстро, приняли в МУП. Для реального лечения, конечно, бесполезен.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Расширенный пакет Dunav — уже другое дело, от 500 евро/год. Клиники Euromedic, Aqualab. Реальное покрытие.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'На Trustpilot у Dunav 3.1 звезды — были жалобы на отказы в выплатах при серьёзных случаях.',meta:'Trustpilot, 2025'}
- ],
- uniqa:[
-  {mood:'pos',text:'UNIQA — 560+ клиник по всей Сербии. Записываешься через call-центр по-английски, приходишь — платит страховая напрямую.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'UNIQA Elegant покрывает роды + наблюдение. Жена родила — оплатили всё. Минус: каренция 4 месяца, планируйте заранее!',meta:'Telegram, 2024'},
-  {mood:'pos',text:'У UNIQA лучший онлайн-калькулятор: вбиваешь возраст, пол — сразу видишь точную цену. Без звонков и «оставьте номер».',meta:'Telegram, 2025'},
-  {mood:'neg',text:'UNIQA: каренция 2 месяца — неприятный сюрприз. Оформил в январе, заболел в феврале — «ваш полис ещё не действует».',meta:'Telegram, 2025'},
-  {mood:'neg',text:'UNIQA: франшиза 15-30% забирает ощутимо. Счёт за МРТ 200 евро — 60 евро из кармана.',meta:'Telegram, 2026'},
-  {mood:'neu',text:'UNIQA Start 2K — оптимальный баланс. За ~€241/год получаешь амбулаторию + наблюдение беременности.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Перешли с Dunav на UNIQA Start — небо и земля. Реально ходим к врачам, а не «для галочки».',meta:'Telegram, 2025'},
-  {mood:'pos',text:'В VMA записали через UNIQA за 3 дня. Психиатр, англоговорящий. Покрыли полностью.',meta:'Telegram, 2026'}
- ],
- generali:[
-  {mood:'pos',text:'По факту получилось только Дженерали — нормальная страховка с хорошим покрытием и стационаром. Действует на следующий день!',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Generali — единственные, кто берёт иностранцев даже БЕЗ ВНЖ. Оформили по загранпаспорту.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Удаление родинки по страховке Generali: направление из поликлиники → операция в Bel Medic → оплатили полностью.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Generali: €44 за 3 месяца (21 год). Лимит €5000, стационар до 30 дней включён. Лучшее предложение для молодых.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'COVID — нестраховой случай у Generali. Узнал это когда попытался обратиться с пневмонией после ковида.',meta:'Telegram, 2024'},
-  {mood:'neg',text:'Проверку зрения ребёнку Generali не покрыла — офтальмолог не входит в пакет для иностранцев.',meta:'Telegram, 2025'},
-  {mood:'neg',text:'Generali: хронические — сразу отказ. Подруге отказали, ибо «болезнь развивалась до начала действия полиса».',meta:'Telegram, 2026'},
-  {mood:'pos',text:'Generali: желчный удалили по страховке — стационар 4 дня, хирургия, всё покрыли в рамках лимита €5K.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'Generali: на семью из 3 (двое взрослых + ребёнок) со стационаром — около €180 за 3 месяца.',meta:'Telegram, 2025'}
- ],
- triglav:[
-  {mood:'pos',text:'У Triglav единственных экстренная стоматология до €300 входит в БАЗУ. Сломал зуб — покрыли.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Калькулятор Triglav: dzokalkulator.triglav.rs — считает сразу, без регистрации. Реально удобно.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'Triglav: импланты до €3K — единственные на рынке с таким покрытием. В расширенном пакете.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'Triglav: для нерезидентов нужна анкета здоровья + медосмотр (если 50+). Немного бюрократии.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'Triglav: мало упоминаний в чатах — всего 21. Сложно судить по отзывам, но условия на бумаге хорошие.',meta:'Анализ, 2026'},
-  {mood:'pos',text:'Triglav: роды до €2K + наблюдение до €1K — лучшее предложение на рынке для беременных.',meta:'Telegram, 2025'}
- ],
- ddor:[
-  {mood:'pos',text:'Я делала DDOR за 200 евро/год, условия вроде приличные. Приложение moj.ddor работает.',meta:'Telegram, 2025'},
-  {mood:'pos',text:'DDOR Златни — ЕДИНСТВЕННЫЕ с разовой выплатой при диагнозе рак/инсульт/инфаркт. Уникальный продукт.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'DDOR: цены не публикуют — только через звонок или калькулятор на сайте. Это напрягает.',meta:'Telegram, 2025'},
-  {mood:'neu',text:'DDOR: в чатах упоминается редко (13 раз). Мало реальных кейсов использования экспатами.',meta:'Анализ, 2026'},
-  {mood:'pos',text:'DDOR Бронзаный пакет — нормальная база для амбулатории. Терапевт + специалисты за разумные деньги.',meta:'Telegram, 2025'}
- ]
-};
+// Данные теперь подгружаются из reviews-data.js (REVIEWS и RAW_REVIEWS)
 const REV_NAMES={wiener:'Wiener',dunav:'Dunav',uniqa:'UNIQA',generali:'Generali',triglav:'Triglav',ddor:'DDOR'};
 const REV_ORDER=['wiener','dunav','uniqa','generali','triglav','ddor'];
 let curRevTab='wiener';
 
+let curRevMode='curated'; // 'curated' или 'raw'
+let revPaginationLimit=20;
+
 function initReviews(){
  const tabs=document.getElementById('revTabs');
+ tabs.innerHTML = '';
  REV_ORDER.forEach(k=>{
   const b=document.createElement('button');
   b.className='rev-tab'+(k===curRevTab?' active':'');
-  b.innerHTML=`${REV_NAMES[k]}<span class="rev-count">${REVIEWS[k].length}</span>`;
-  b.onclick=()=>{curRevTab=k;document.querySelectorAll('.rev-tab').forEach(t=>t.classList.remove('active'));b.classList.add('active');renderRevList()};
+  
+  const count = curRevMode === 'curated' ? REVIEWS[k].length : (RAW_REVIEWS[k] ? RAW_REVIEWS[k].length : 0);
+  b.innerHTML=`${REV_NAMES[k]}<span class="rev-count">${count}</span>`;
+  
+  b.onclick=()=>{
+      curRevTab=k;
+      revPaginationLimit=20; 
+      initReviews(); // Перерендерим табы чтобы обновить active
+  };
   tabs.appendChild(b);
  });
+ 
+ // Подключаем слушатели для переключателя режима
+ const toggles = document.querySelectorAll('input[name="revMode"]');
+ toggles.forEach(t => {
+     t.onchange = (e) => {
+         curRevMode = e.target.value;
+         revPaginationLimit = 20;
+         initReviews();
+     }
+ });
+ 
  renderRevList();
 }
 function renderRevList(){
  const list=document.getElementById('revList');
- list.innerHTML=REVIEWS[curRevTab].map(r=>{
+ const loadMoreBtn = document.getElementById('loadMoreReviews');
+ 
+ const sourceData = curRevMode === 'curated' ? REVIEWS[curRevTab] : (RAW_REVIEWS[curRevTab] || []);
+ const itemsToRender = curRevMode === 'curated' ? sourceData : sourceData.slice(0, revPaginationLimit);
+ 
+ list.innerHTML=itemsToRender.map(r=>{
   const cls=r.mood==='pos'?'pos':r.mood==='neg'?'neg':'neu';
   const icon=r.mood==='pos'?'✅':r.mood==='neg'?'⚠️':'💬';
   return `<div class="rev-item ${cls}"><div class="rev-mood">${icon} ${r.mood==='pos'?'Позитивный':r.mood==='neg'?'Негативный':'Нейтральный'}</div><div class="rev-text">«${r.text}»</div><div class="rev-meta">${r.meta}</div></div>`;
  }).join('');
+
+ if(curRevMode === 'raw' && revPaginationLimit < sourceData.length) {
+     if(loadMoreBtn) {
+         loadMoreBtn.style.display = 'block';
+         loadMoreBtn.innerHTML = `Показать ещё (осталось ${sourceData.length - revPaginationLimit})`;
+         loadMoreBtn.onclick = () => {
+             revPaginationLimit += 20;
+             renderRevList();
+         };
+     }
+ } else {
+     if(loadMoreBtn) loadMoreBtn.style.display = 'none';
+ }
 }
 function toggleReviews(){
  const btn=document.getElementById('revToggle');
