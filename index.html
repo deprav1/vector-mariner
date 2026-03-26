@@ -165,7 +165,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <div class="nav-logo">🏥 Страховка.RS</div>
 <button class="burger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
 <div class="nav-links">
-<a href="#compare">Сравнение</a><a href="#scenarios">Что если?</a><a href="#companies">Компании</a><a href="#calculator">Калькулятор</a><a href="#lifehacks">Лайфхаки</a><a href="#pitfalls">Нюансы</a><a href="#docs">Документы</a>
+<a href="#compare">Сравнение</a><a href="#voice">Голос экспатов</a><a href="#scenarios">Что если?</a><a href="#companies">Компании</a><a href="#calculator">Калькулятор</a><a href="#lifehacks">Лайфхаки</a><a href="#pitfalls">Нюансы</a><a href="#docs">Документы</a>
 </div>
 </div></nav>
 
@@ -202,7 +202,77 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 
 </div></section>
 
-<!-- SCENARIOS -->
+<!-- EXPAT VOICE -->
+<section id="voice" style="background:var(--surface)"><div class="container">
+<h2 class="section-title fade-in">Голос экспатов: анализ 722 упоминаний</h2>
+<p class="section-sub fade-in">Автоматический анализ 90 страниц Telegram-чата русскоговорящих экспатов. Данные за 2021–2026 гг.</p>
+
+<div class="glass fade-in" style="margin-bottom:24px">
+<div style="display:grid;grid-template-columns:120px 1fr 80px 200px;gap:8px 16px;align-items:center;font-size:.88rem">
+<div style="font-weight:700;color:var(--text-muted);font-size:.75rem">КОМПАНИЯ</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem">УПОМИНАНИЯ В ЧАТАХ</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem;text-align:center">ВСЕГО</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem">ТОНАЛЬНОСТЬ</div>
+
+<div style="font-weight:700">Wiener</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,var(--green) 32%,var(--red) 32% 44%,var(--border) 44%);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:700">217</div>
+<div style="font-size:.78rem;color:var(--text-muted)">✅ 70 позит. · ⚠️ 25 негат.</div>
+
+<div style="font-weight:700">Dunav</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:86%;height:100%;background:linear-gradient(90deg,var(--green) 29%,var(--red) 29% 36%,var(--border) 36%);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:700">186</div>
+<div style="font-size:.78rem;color:var(--text-muted)">✅ 53 позит. · ⚠️ 13 негат.</div>
+
+<div style="font-weight:700">UNIQA</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:65%;height:100%;background:linear-gradient(90deg,var(--green) 28%,var(--red) 28% 41%,var(--border) 41%);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:700">142</div>
+<div style="font-size:.78rem;color:var(--text-muted)">✅ 40 позит. · ⚠️ 18 негат.</div>
+
+<div style="font-weight:700;color:var(--yellow)">Generali*</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,var(--green) 34%,var(--red) 34% 50%,var(--border) 50%);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:700">134</div>
+<div style="font-size:.78rem;color:var(--text-muted)">✅ 46 позит. · ⚠️ 21 негат.</div>
+
+<div style="font-weight:600;color:var(--text-muted)">Triglav</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:10%;height:100%;background:linear-gradient(90deg,var(--green) 33%,var(--red) 33% 48%,var(--border) 48%);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:600;color:var(--text-muted)">21</div>
+<div style="font-size:.78rem;color:var(--yellow)">⚠️ мало данных</div>
+
+<div style="font-weight:600;color:var(--text-muted)">DDOR</div>
+<div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:6%;height:100%;background:var(--green);border-radius:4px"></div></div></div>
+<div style="text-align:center;font-weight:600;color:var(--text-muted)">13</div>
+<div style="font-size:.78rem;color:var(--yellow)">⚠️ мало данных</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="fade-in">
+<div class="glass" style="padding:20px">
+<h4 style="margin-bottom:12px;font-size:.9rem">📊 Ключевые выводы</h4>
+<ul style="list-style:none;padding:0;font-size:.85rem;color:var(--text-muted)">
+<li style="margin-bottom:8px">🏆 <strong style="color:var(--text)">Wiener</strong> — самая обсуждаемая (217 упом.). Популярна для ВНЖ за €90, но сервис вызывает нарекания</li>
+<li style="margin-bottom:8px">📈 <strong style="color:var(--text)">Dunav</strong> — 2-е место (186 упом.). Берут «для галочки» на ВНЖ. Покрытие ~€150 вызывает разочарование при попытке реально использовать</li>
+<li style="margin-bottom:8px">⭐ <strong style="color:var(--text)">Generali</strong> — 134 упоминания, высокий % позитива. Реальные кейсы оплаты операций (удаление родинки, желчного). Не представлена в сравнительной таблице*</li>
+<li style="margin-bottom:8px">🔍 <strong style="color:var(--text)">UNIQA</strong> — 142 упоминания. Рекомендуют за широкую сеть клиник и англоязычную поддержку</li>
+<li>📉 <strong style="color:var(--text)">Triglav/DDOR</strong> — мало упоминаний (<30). Недостаточно данных для выводов из чатов</li>
+</ul>
+</div>
+<div class="glass" style="padding:20px">
+<h4 style="margin-bottom:12px;font-size:.9rem">💬 Характерные цитаты</h4>
+<div style="font-size:.82rem;color:var(--text-muted);border-left:2px solid var(--accent);padding-left:12px;margin-bottom:12px">
+«Страховку от Wiener со стоматологией можно брать только если сравнить со стоимостью лечения» — из чата
+</div>
+<div style="font-size:.82rem;color:var(--text-muted);border-left:2px solid var(--green);padding-left:12px;margin-bottom:12px">
+«Дунав самая дешёвая (~90 евро/год), берут для ВНЖ, но покрытие 150 евро только» — из чата
+</div>
+<div style="font-size:.82rem;color:var(--text-muted);border-left:2px solid var(--yellow);padding-left:12px;margin-bottom:12px">
+«По факту получилось только Дженерали — нормальная страховка с хорошим покрытием и стационаром» — из чата
+</div>
+<div style="font-size:.82rem;color:var(--text-muted);border-left:2px solid var(--accent);padding-left:12px">
+«Я делала DDOR за 200 евро/год, условия вроде приличные» — из чата
+</div>
+</div>
+</div>
+
+<p class="fade-in" style="color:var(--text-muted);font-size:.78rem;margin-top:16px">* Generali активно обсуждается в чатах, но не включена в сравнительную таблицу — нет публичных пакетов ДМС на сайте. Зелёный = позитивные упоминания, красный = негативные, серый = нейтральные/информационные. Анализ: keyword-based, экспорт 26.03.2026.</p>
+</div></section>
 <section id="scenarios"><div class="container">
 <h2 class="section-title fade-in">Что если...?</h2>
 <p class="section-sub fade-in">Выбери жизненную ситуацию — увидишь, что покроет каждая страховка</p>
