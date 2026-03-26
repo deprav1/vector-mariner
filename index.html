@@ -545,36 +545,47 @@ const r=document.getElementById('calcResult');
 const recs=[];
 
 if(p==='price'&&b<=20){
-recs.push({name:'Dunav Базовый',price:'~€65–100/год',note:'Только для ВНЖ. Минимальное реальное покрытие.',score:60});
-recs.push({name:'UNIQA Vital Start',price:'~€15–20/мес',note:'Амбулатория без стационара. Хороший баланс цены.',score:75});
+ recs.push({name:'Generali Для иностранцев',price:'от ~€120/год',note:'Идеал для ВНЖ + есть стационар до 30 дней + нет каренции!',score:95});
+ recs.push({name:'Wiener Basic M1',price:'~€136/год',note:'Покрытие €1K. 5 визитов + экстренная стома. Без каренции.',score:85});
+ recs.push({name:'Triglav Ванб. €1K',price:'~€114/год',note:'Включает экстренную стоматологию до €300.',score:80});
+ recs.push({name:'Dunav Базовый',price:'~€110/год',note:'Минимальный полис «для галочки» на ВНЖ. Лимит всего €150.',score:40});
 }else if(p==='critical'){
-recs.push({name:'DDOR Zlatni + Тяжёлые болезни',price:'Калькулятор на ddor.rs',note:'Единственная компания с разовой выплатой при раке/инсульте/инфаркте.',score:95});
-recs.push({name:'UNIQA Vital Elite',price:'~€45–54/мес',note:'€100K покрытия включая стационар и хирургию.',score:80});
+ recs.push({name:'DDOR Zlatni',price:'По запросу',note:'УНИКАЛЬНО: разовая выплата при раке, инсульте, инфаркте.',score:95});
+ recs.push({name:'UNIQA Elite',price:'от €54/мес',note:'Покрытие до €100K: кардиология, онкология, хирургия.',score:90});
+ recs.push({name:'Triglav Ванб+больн.',price:'Калькулятор',note:'Химиотерапия и радиотерапия покрываются в рамках лимита.',score:85});
 }else if(p==='comfort'){
-recs.push({name:'UNIQA Vital Elegant',price:'~€30–45/мес',note:'Лучший баланс. 1000+ клиник, офтальмолог, стоматология.',score:90});
-recs.push({name:'Triglav Основной',price:'По запросу',note:'70% рефунд вне сети. Импланты до €3K. Роды до €2K.',score:85});
-recs.push({name:'Wiener Maxima',price:'По запросу',note:'24/7 Call Center. Мобильное приложение.',score:80});
+ recs.push({name:'UNIQA Elegant',price:'~€54/мес',note:'Лучший премиум-баланс. 560+ клиник, офтальмолог, стационар.',score:95});
+ recs.push({name:'Triglav Ванб. €3K',price:'~€200-350/год',note:'Расширенная амбулаторная диагностика и специалисты.',score:90});
+ recs.push({name:'Wiener Basic M3',price:'~€200/год',note:'Серьёзная сумма на амбулаторию + покрытие родов.',score:85});
 }else{
-if(h==='yes'){
-recs.push({name:'UNIQA Vital Elegant',price:'~€30–45/мес',note:'€10K лимит. Стационар + хирургия + амбулатория.',score:90});
-recs.push({name:'DDOR Zlatni',price:'Калькулятор на ddor.rs',note:'Гибкая настройка до €100K. Стоматология включена.',score:85});
-}else{
-recs.push({name:'UNIQA Vital Start',price:'~€15–20/мес',note:'Амбулатория до €2K. Хватает для рядовых визитов.',score:85});
-}
+ if(h==='yes'){
+  recs.push({name:'Generali Для иностранцев',price:'от ~€120/год',note:'Самый дешёвый на рынке со СТАЦИОНАРОМ (до 30 дней) и хирургией.',score:95});
+  recs.push({name:'UNIQA Elegant',price:'~€54/мес',note:'€10K лимит на госпитализацию и хирургию.',score:90});
+  recs.push({name:'DDOR Zlatni',price:'По запросу',note:'Стационар, интенсивная терапия + КТ/МРТ.',score:85});
+ }else{
+  recs.push({name:'UNIQA Start 2K',price:'~€241/год',note:'Амбулатория до €2K + наблюдение беременности. Отличная сеть.',score:85});
+  recs.push({name:'Wiener Basic M2',price:'~€170/год',note:'Амбулатория до €2K (до 5 визитов) + наблюдение беременности.',score:80});
+ }
 }
 
 if(pr==='yes'){
-recs.push({name:'Triglav (беременность)',price:'По запросу',note:'Лучшее покрытие: роды до €2K, наблюдение до €1K.',score:88});
+ recs.push({name:'Triglav Ванб+больн.',price:'Калькулятор',note:'ЛУЧШИЙ: роды до €2K, наблюдение до €1K.',score:95});
+ recs.push({name:'UNIQA Elegant/Elite',price:'~€54/мес',note:'Покрывает наблюдение + роды. Внимание: каренция 4 мес!',score:90});
+ recs.push({name:'Wiener Basic M3',price:'~€200/год',note:'Покрывает наблюдение + роды. Без каренции!',score:85});
 }
 
 if(ch==='yes'){
-recs.unshift({name:'⚠️ Важно!',price:'',note:'Хронические заболевания имеют ограничения у ВСЕХ компаний. Обязательно уточни покрытие ДО оформления. Не скрывай болезни в анкете!',score:0});
+ recs.unshift({name:'⚠️ Хронические заболевания',price:'',note:'Присутствуют жёсткие ограничения у ВСЕХ компаний. Обязательно укажите в анкете — иначе отказ в выплате!',score:999});
 }
 
-recs.sort((a,b)=>b.score-a.score);
+const u=new Map(); recs.forEach(r=>{if(!u.has(r.name) || u.get(r.name).score < r.score) u.set(r.name, r)});
+const finalRecs=Array.from(u.values());
+finalRecs.sort((a,b)=>b.score-a.score);
 
-r.innerHTML='<h3 style="margin-bottom:20px;font-weight:700">Рекомендации:</h3>'+
-recs.map((rec,i)=>`<div class="result-card"><h4>${i+1}. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
+r.innerHTML='<h3 style="margin-bottom:20px;font-weight:700">Рекомендации (топ совпадений):</h3>'+
+finalRecs.slice(0, 5).map((rec,i)=>`<div class="result-card"><h4>${i+1}. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
+}
+. ${rec.name}</h4>${rec.price?`<div class="price">${rec.price}</div>`:''}<div class="note">${rec.note}</div></div>`).join('');
 }
 
 // Smooth scroll
@@ -690,7 +701,7 @@ const SCENARIOS=[
   {name:'UNIQA',cls:'tag-warn',text:'⚠️ Хитна стома (экстренная) — покрывается, плановая нет'},
   {name:'DDOR',cls:'tag-yes',text:'✅ Srebrni: хитна. Zlatni: полный модуль стоматологии'},
   {name:'Triglav',cls:'tag-yes',text:'✅ Хитна до €300 в базовом пакете! Лучший вариант'},
-  {name:'Wiener',cls:'tag-warn',text:'⚠️ Только хитна (неотложная)'},
+  {name:'Wiener',cls:'tag-warn',text:'⚠️ Только хитна (неотложная). Строгое согласование.'},
   {name:'Dunav',cls:'tag-no',text:'❌ Стоматология не покрывается вообще'},
   {name:'Generali',cls:'tag-no',text:'❌ Стоматология не покрывается'}
  ]},
