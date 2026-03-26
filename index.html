@@ -16,7 +16,7 @@ a{color:var(--accent);text-decoration:none;transition:opacity .2s}a:hover{opacit
 /* Layout */
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 section{padding:80px 0}
-.section-title{font-size:2rem;font-weight:800;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-title{font-size:2rem;font-weight:800;margin-bottom:12px;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .section-sub{color:var(--text-muted);font-size:1.05rem;margin-bottom:40px;max-width:600px}
 
 /* Glass card */
@@ -26,7 +26,7 @@ section{padding:80px 0}
 /* Nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
 nav .container{display:flex;justify-content:space-between;align-items:center}
-.nav-logo{font-weight:800;font-size:1.15rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-logo{font-weight:800;font-size:1.15rem;background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .nav-links{display:flex;gap:24px;flex-wrap:wrap}
 .nav-links a{color:var(--text-muted);font-size:.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text);-webkit-text-fill-color:unset;opacity:1}
 .burger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;padding:4px}
@@ -36,7 +36,7 @@ nav .container{display:flex;justify-content:space-between;align-items:center}
 .hero{padding:140px 0 80px;text-align:center;position:relative}
 .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);pointer-events:none}
 .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;margin-bottom:20px;line-height:1.15}
-.hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 span{background:var(--gradient);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--text-muted);font-size:1.15rem;max-width:640px;margin:0 auto 32px}
 .hero-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .badge{background:var(--card);border:1px solid var(--border);border-radius:99px;padding:8px 18px;font-size:.85rem;color:var(--text-muted)}
@@ -97,11 +97,8 @@ tr:hover td{background:var(--card-hover)}
 /* Footer */
 footer{padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-muted);font-size:.85rem}
 
-/* Consultant persona */
-.consultant{display:flex;gap:20px;align-items:center;margin:32px auto 0;max-width:600px;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px}
-.consultant-avatar{width:56px;height:56px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
-.consultant-name{font-weight:700;font-size:.95rem}.consultant-role{color:var(--text-muted);font-size:.82rem}
-.consultant-quote{color:var(--text-muted);font-size:.88rem;margin-top:6px;font-style:italic}
+/* Voice mobile */
+@media(max-width:768px){.voice-grid{grid-template-columns:80px 1fr 50px!important;font-size:.78rem!important}.voice-grid .voice-tone{display:none}}
 
 /* Lifehacks */
 .lifehack{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(168,85,247,.08));border:1px solid rgba(108,92,231,.25);border-radius:var(--radius);padding:24px;margin-bottom:16px}
@@ -131,11 +128,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 @keyframes tipIn{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @media(max-width:768px){td[data-tip]:hover::after{left:0;transform:none;width:200px}td[data-tip]:hover::before{left:20px;transform:translateY(-4px)}}
 
-/* Marko tip */
-.marko-tip{background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(168,85,247,.1));border:1px solid rgba(108,92,231,.3);border-radius:var(--radius);padding:20px 24px;margin-top:20px;display:flex;align-items:flex-start;gap:14px}
-.marko-tip .avatar{font-size:1.8rem;flex-shrink:0}
-.marko-tip .tip-text{font-size:.88rem;color:var(--text)}
-.marko-tip .tip-label{font-weight:700;color:var(--accent);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+
 
 /* Scenarios */
 .scenarios{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
@@ -208,28 +201,28 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <p class="section-sub fade-in">Автоматический анализ 90 страниц Telegram-чата русскоговорящих экспатов. Данные за 2021–2026 гг.</p>
 
 <div class="glass fade-in" style="margin-bottom:24px">
-<div style="display:grid;grid-template-columns:120px 1fr 80px 200px;gap:8px 16px;align-items:center;font-size:.88rem">
+<div class="voice-grid" style="display:grid;grid-template-columns:120px 1fr 80px 200px;gap:8px 16px;align-items:center;font-size:.88rem">
 <div style="font-weight:700;color:var(--text-muted);font-size:.75rem">КОМПАНИЯ</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem">УПОМИНАНИЯ В ЧАТАХ</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem;text-align:center">ВСЕГО</div><div style="font-weight:700;color:var(--text-muted);font-size:.75rem">ТОНАЛЬНОСТЬ</div>
 
 <div style="font-weight:700">Wiener</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,var(--green) 32%,var(--red) 32% 44%,var(--border) 44%);border-radius:4px"></div></div></div>
 <div style="text-align:center;font-weight:700">217</div>
-<div style="font-size:.78rem;color:var(--text-muted)">✅ 70 позит. · ⚠️ 25 негат.</div>
+<div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 70 позит. · ⚠️ 25 негат.</div>
 
 <div style="font-weight:700">Dunav</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:86%;height:100%;background:linear-gradient(90deg,var(--green) 29%,var(--red) 29% 36%,var(--border) 36%);border-radius:4px"></div></div></div>
 <div style="text-align:center;font-weight:700">186</div>
-<div style="font-size:.78rem;color:var(--text-muted)">✅ 53 позит. · ⚠️ 13 негат.</div>
+<div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 53 позит. · ⚠️ 13 негат.</div>
 
 <div style="font-weight:700">UNIQA</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:65%;height:100%;background:linear-gradient(90deg,var(--green) 28%,var(--red) 28% 41%,var(--border) 41%);border-radius:4px"></div></div></div>
 <div style="text-align:center;font-weight:700">142</div>
-<div style="font-size:.78rem;color:var(--text-muted)">✅ 40 позит. · ⚠️ 18 негат.</div>
+<div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 40 позит. · ⚠️ 18 негат.</div>
 
 <div style="font-weight:700;color:var(--yellow)">Generali*</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:62%;height:100%;background:linear-gradient(90deg,var(--green) 34%,var(--red) 34% 50%,var(--border) 50%);border-radius:4px"></div></div></div>
 <div style="text-align:center;font-weight:700">134</div>
-<div style="font-size:.78rem;color:var(--text-muted)">✅ 46 позит. · ⚠️ 21 негат.</div>
+<div class="voice-tone" style="font-size:.78rem;color:var(--text-muted)">✅ 46 позит. · ⚠️ 21 негат.</div>
 
 <div style="font-weight:600;color:var(--text-muted)">Triglav</div>
 <div><div style="background:var(--border);border-radius:4px;height:20px;overflow:hidden"><div style="width:10%;height:100%;background:linear-gradient(90deg,var(--green) 33%,var(--red) 33% 48%,var(--border) 48%);border-radius:4px"></div></div></div>
@@ -325,9 +318,9 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 
 <div class="glass company-card fade-in">
 <div class="logo" style="color:#fdcb6e">Wiener Städtische</div>
-<div class="tagline">Лучший бюджетный для ВНЖ (лучше Dunav!)</div>
+<div class="tagline">Бюджетный полис для ВНЖ, от €11.39/мес</div>
 <div class="rating-bars"><div class="rating-bar"><div class="rb-label">Цена</div><div class="rb-track"><div class="rb-fill" style="width:90%;background:var(--green)"></div></div></div><div class="rating-bar"><div class="rb-label">Покрытие</div><div class="rb-track"><div class="rb-fill" style="width:50%;background:var(--yellow)"></div></div></div><div class="rating-bar"><div class="rb-label">Сервис</div><div class="rb-track"><div class="rb-fill" style="width:40%;background:var(--red)"></div></div></div></div>
-<div class="pkg"><div class="pkg-name">Basic — для ВНЖ</div><div class="pkg-price">~€90/год <sup title="srb.guide + чаты">⁴</sup></div><div class="pkg-details">Покрытие €1–3K <sup title="wiener.co.rs/basic">офиц.</sup>. Врачи, лаборатория, диагностика, хитна стоматология, мед-тех.помагала, защита беременных (кроме 1K). Допунско: систематский, лекарства, физио, офтальмология, стоматология.</div></div>
+<div class="pkg"><div class="pkg-name">New Basic — для ВНЖ</div><div class="pkg-price">от €11.39/мес (~€136/год) <sup title="sindikatnispetrol.rs + wiener.co.rs">⁴</sup></div><div class="pkg-details">Покрытие €1–3K <sup title="wiener.co.rs/basic">офиц.</sup>. Врачи, лаборатория, диагностика, хитна стоматология, мед-тех.помагала, защита беременных (кроме 1K), защита ментального здоровья в кризисных ситуациях. Допунско: систематский, лекарства, физио, офтальмология, стоматология.</div></div>
 <div class="pkg"><div class="pkg-name">Premium / Maxima</div><div class="pkg-price">По запросу (€100K)</div><div class="pkg-details">+ Стационар, хирургия, КТ/МРТ, беременность. Каренция 2 мес (обычное), 4 мес (роды).</div></div>
 <p style="font-size:.82rem;color:var(--text-muted);margin:8px 0">⚡ Франшиза: 30% в Bel Medic, Medi Group. Вне сети: 30–50%.</p>
 <ul class="pros"><li>Basic действует сразу (без каренции)</li><li>Лучше Dunav за те же деньги</li><li>Реальный кейс: УЗИ покрыли полностью</li></ul>
@@ -339,7 +332,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <div class="logo" style="color:#e17055">Dunav</div>
 <div class="tagline">Самый дешёвый полис для ВНЖ (лимит ~€150)</div>
 <div class="rating-bars"><div class="rating-bar"><div class="rb-label">Цена</div><div class="rb-track"><div class="rb-fill" style="width:95%;background:var(--green)"></div></div></div><div class="rating-bar"><div class="rb-label">Покрытие</div><div class="rb-track"><div class="rb-fill" style="width:25%;background:var(--red)"></div></div></div><div class="rating-bar"><div class="rb-label">Сервис</div><div class="rb-track"><div class="rb-fill" style="width:45%;background:var(--yellow)"></div></div></div></div>
-<div class="pkg"><div class="pkg-name">Базовый (для ВНЖ)</div><div class="pkg-price">~€65–100/год</div><div class="pkg-details">Покрытие ~€150. 3 визита к специалисту, 1 анализ. Символический полис.</div></div>
+<div class="pkg"><div class="pkg-name">Базовый (для ВНЖ)</div><div class="pkg-price">~€65–100/год</div><div class="pkg-details">Покрытие ~€150. 3 визита к специалисту, 1 анализ. Минимальное покрытие — для оформления ВНЖ.</div></div>
 <div class="pkg"><div class="pkg-name">Расширенный</div><div class="pkg-price">от €500/год</div><div class="pkg-details">Реальное покрытие, клиники Euromedic, Aqualab, Medi Group.</div></div>
 <ul class="pros"><li>Самый дешёвый для галочки</li><li>Офисы по всей Сербии</li></ul>
 <ul class="cons"><li>Базовый = символический</li><li>Мало покрывает без расширения</li></ul>
@@ -446,7 +439,9 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 
 <div class="lifehack fade-in"><div class="lifehack-tag">Экстренная помощь</div><h4>🚑 Аппендицит без страховки = 150 000 RSD (~€1280)</h4><p>Реальный кейс из чата: операция + 4 дня в палате в Ургентни Центар. «Отличная палата, забота врачей. Стоимость 150 000 динар.» Со страховкой это было бы бесплатно.</p></div>
 
-<div class="lifehack fade-in"><div class="lifehack-tag">Доктор Марко рекомендует</div><h4>🤝 Подружитесь с сербскими соседями</h4><p>«В экстренной ситуации было к кому обратиться для вызова скорой. Опыт пациентов — при общении на сербском скорая приезжала за 10 минут» — совет врача из чата.</p></div>
+<div class="lifehack fade-in"><div class="lifehack-tag">Из чата</div><h4>🤝 Подружитесь с сербскими соседями</h4><p>«В экстренной ситуации было к кому обратиться для вызова скорой. Опыт пациентов — при общении на сербском скорая приезжала за 10 минут» — совет из чата.</p></div>
+
+<div class="lifehack fade-in"><div class="lifehack-tag">Важно</div><h4>🧠 Психолог/психиатр: что покрывают страховые</h4><p>Wiener: «Защита ментального здоровья в кризисных ситуациях» во всех пакетах. UNIQA: психиатры и психологи в сети специалистов. Triglav: психиатрия до €100 в расширенном пакете. DDOR/Dunav: уточняйте. В чатах 15+ сообщений о поиске русскоговорящих психологов в Белграде — спрос огромный.</p></div>
 </div></section>
 
 
@@ -515,7 +510,7 @@ td[data-tip]:hover::before{content:'';position:absolute;left:50%;top:100%;transf
 <!-- FOOTER -->
 <footer><div class="container">
 <p>🏥 Страховка.RS — открытый проект · <a href="https://github.com/deprav1/vector-mariner">GitHub</a></p>
-<p style="margin-top:8px">Данные актуальны на март 2026. Источники: deep research, Telegram-чаты, Trustpilot, официальные сайты.</p>
+<p style="margin-top:8px">Данные проверены 26.03.2026. Источники: deep research, Telegram-чаты (722 упоминания), Trustpilot, официальные сайты компаний.</p>
 <p style="margin-top:4px">Проект не связан ни с одной страховой компанией. Все отзывы — реальные цитаты.</p>
 </div></footer>
 
@@ -574,31 +569,31 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
 // === INTERACTIVE TABLE DATA ===
 const D={
  uniqa:{
-  start1k:{price:'~€189/год¹',limit:'€1 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'2 мес',franch:'15–30%',clinics:['y','560+'],eye:['n','❌'],dent:['w','⚠️ Хитна'],preg:['n','❌'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
-  start2k:{price:'~€241/год¹',limit:'€2 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['n','❌'],dent:['w','⚠️ Хитна'],preg:['y','✅ Набл.'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
-  elegant:{price:'~€649/год¹',limit:'€10 000',amb:['y','✅'],hosp:['y','✅'],severe:['w','⚠️ Частично'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['y','✅ +€100'],dent:['w','⚠️ Хитна'],preg:['y','✅ + Роды'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
-  elite:{price:'от €54/мес¹',limit:'€100 000',amb:['y','✅'],hosp:['y','✅'],severe:['y','✅'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['y','✅ +€100'],dent:['w','⚠️ Хитна'],preg:['y','✅ + Роды'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']}
+  start1k:{price:'~€189/год¹',limit:'€1 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'2 мес',franch:'15–30%',clinics:['y','560+'],eye:['n','❌'],dent:['w','⚠️ Хитна'],preg:['n','❌'],psych:['y','✅ В сети'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
+  start2k:{price:'~€241/год¹',limit:'€2 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['n','❌'],dent:['w','⚠️ Хитна'],preg:['y','✅ Набл.'],psych:['y','✅ В сети'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
+  elegant:{price:'~€649/год¹',limit:'€10 000',amb:['y','✅'],hosp:['y','✅'],severe:['w','⚠️ Частично'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['y','✅ +€100'],dent:['w','⚠️ Хитна'],preg:['y','✅ + Роды'],psych:['y','✅ В сети'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']},
+  elite:{price:'от €54/мес¹',limit:'€100 000',amb:['y','✅'],hosp:['y','✅'],severe:['y','✅'],chronic:['n','❌ Искл.'],wait:'2 мес / 4 мес роды',franch:'15–30%',clinics:['y','560+'],eye:['y','✅ +€100'],dent:['w','⚠️ Хитна'],preg:['y','✅ + Роды'],psych:['y','✅ В сети'],eng:['y','✅ Call-центр'],trust:'— н/д',vnz:['y','✅']}
  },
  ddor:{
-  bronzani:{price:'По запросу²',limit:'от €1 000',amb:['y','✅ Терапевт+спец.'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
-  srebrni:{price:'По запросу²',limit:'до €10 000',amb:['y','✅'],hosp:['n','❌'],severe:['w','⚠️ Модуль'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['y','✅ Набл.'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
-  zlatni:{price:'По запросу²',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅ + Хирургия'],severe:['y','✅ Выплата'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['y','✅ Допунско'],dent:['y','✅ Модуль'],preg:['y','✅ Набл.'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']}
+  bronzani:{price:'По запросу²',limit:'от €1 000',amb:['y','✅ Терапевт+спец.'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
+  srebrni:{price:'По запросу²',limit:'до €10 000',amb:['y','✅'],hosp:['n','❌'],severe:['w','⚠️ Модуль'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['y','✅ Набл.'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
+  zlatni:{price:'По запросу²',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅ + Хирургия'],severe:['y','✅ Выплата'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['y','✅ Допунско'],dent:['y','✅ Модуль'],preg:['y','✅ Набл.'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']}
  },
  triglav:{
-  vanb1k:{price:'€100–500/год³',limit:'€1 000–5 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['y','✅ Хитна €300'],preg:['n','❌'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
-  vanb5k:{price:'Калькулятор³',limit:'€5 000–100 000',amb:['y','✅'],hosp:['y','✅ Стационар'],severe:['y','✅ Химио/радио'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['y','✅ Хитна €300'],preg:['y','✅ До €1K + роды €2K'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']}
+  vanb1k:{price:'€100–500/год³',limit:'€1 000–5 000',amb:['y','✅'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['y','✅ Хитна €300'],preg:['n','❌'],psych:['n','❌'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']},
+  vanb5k:{price:'Калькулятор³',limit:'€5 000–100 000',amb:['y','✅'],hosp:['y','✅ Стационар'],severe:['y','✅ Химио/радио'],chronic:['n','❌ Искл.'],wait:'Уточнять',franch:'Уточнять',clinics:['y','Широкая'],eye:['w','⚠️ Допунско'],dent:['y','✅ Хитна €300'],preg:['y','✅ До €1K + роды €2K'],psych:['y','✅ До €100'],eng:['w','⚠️'],trust:'— н/д',vnz:['y','✅']}
  },
  wiener:{
-  basic:{price:'~€90/год⁴',limit:'€1 000–3 000',amb:['y','✅ 5 визитов'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Жёсткие'],wait:['y','✅ Нет'],franch:'До 30%',clinics:['y','Bel Medic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['w','⚠️ Только 2K-3K'],eng:['n','❌ Только серб.'],trust:['n','1.4★ (137 отз.)'],vnz:['y','✅']},
-  maxima:{price:'от €28/мес⁴',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅ Стационар'],severe:['y','✅'],chronic:['n','❌ Жёсткие'],wait:'2 мес / 4 мес роды',franch:'До 30%',clinics:['y','Bel Medic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['y','✅'],eng:['n','❌ Только серб.'],trust:['n','1.4★ (137 отз.)'],vnz:['y','✅']}
+  basic:{price:'от ~€136/год⁴',limit:'€1 000–3 000',amb:['y','✅ 5 визитов'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌ Жёсткие'],wait:['y','✅ Нет'],franch:'До 30%',clinics:['y','Bel Medic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['w','⚠️ Только 2K-3K'],psych:['y','✅ Кризис'],eng:['n','❌ Только серб.'],trust:['n','1.4★ (137 отз.)'],vnz:['y','✅']},
+  maxima:{price:'от €28/мес⁴',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅ Стационар'],severe:['y','✅'],chronic:['n','❌ Жёсткие'],wait:'2 мес / 4 мес роды',franch:'До 30%',clinics:['y','Bel Medic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Хитна'],preg:['y','✅'],psych:['y','✅ Кризис'],eng:['n','❌ Только серб.'],trust:['n','1.4★ (137 отз.)'],vnz:['y','✅']}
  },
  dunav:{
-  bazicni:{price:'~€110/год⁵',limit:'~€150',amb:['w','⚠️ 3 визита'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌'],wait:['y','✅ Сразу'],franch:'15% + до 30%',clinics:['w','Euromedic, Medi'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']},
-  prosireni:{price:'от €500/год⁵',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅'],severe:['w','⚠️ Уточнять'],chronic:['n','❌'],wait:'Уточнять',franch:'15% + до 30%',clinics:['y','Euromedic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Допунско'],preg:['w','⚠️ Допунско'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']}
+  bazicni:{price:'~€110/год⁵',limit:'~€150',amb:['w','⚠️ 3 визита'],hosp:['n','❌'],severe:['n','❌'],chronic:['n','❌'],wait:['y','✅ Сразу'],franch:'15% + до 30%',clinics:['w','Euromedic, Medi'],eye:['n','❌'],dent:['n','❌'],preg:['n','❌'],psych:['n','❌'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']},
+  prosireni:{price:'от €500/год⁵',limit:'до €100 000',amb:['y','✅'],hosp:['y','✅'],severe:['w','⚠️ Уточнять'],chronic:['n','❌'],wait:'Уточнять',franch:'15% + до 30%',clinics:['y','Euromedic, Medi'],eye:['w','⚠️ Допунско'],dent:['w','⚠️ Допунско'],preg:['w','⚠️ Допунско'],psych:['w','⚠️ Уточнять'],eng:['w','⚠️'],trust:['w','3.1★ (3 отз.)'],vnz:['y','✅']}
  }
 };
-const ROWS=['price','limit','amb','hosp','severe','chronic','wait','franch','clinics','eye','dent','preg','eng','trust','vnz'];
-const LABELS=['Цена/год','Лимит/год','Амбулатория','Стационар + хирургия','Тяжёлые болезни','Хронические','Каренция','Франшиза','Сеть клиник','Офтальмолог','Стоматология','Беременность','Англ. поддержка','Trustpilot','Подходит для ВНЖ'];
+const ROWS=['price','limit','amb','hosp','severe','chronic','wait','franch','clinics','eye','dent','preg','psych','eng','trust','vnz'];
+const LABELS=['Цена/год','Лимит/год','Амбулатория','Стационар + хирургия','Тяжёлые болезни','Хронические','Каренция','Франшиза','Сеть клиник','Офтальмолог','Стоматология','Беременность','🧠 Психолог/психиатр','Англ. поддержка','Trustpilot','Подходит для ВНЖ'];
 
 function cell(v,co,pk,k){
  const tip=(TIPS[co]&&TIPS[co][pk]&&TIPS[co][pk][k])||'';
